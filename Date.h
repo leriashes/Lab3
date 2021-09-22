@@ -9,6 +9,9 @@ private:
 	int month;	//Месяц
 	int year;	//Год
 
+	void ReadTime();	//Ввод только времени
+	void ReadDate();	//Ввод только даты
+
 public:
 	Date();		//Конструктор
 	Date(int day, int month, int year);		//Конструктор с параметром (только дата)

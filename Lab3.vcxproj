@@ -139,10 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Author.cpp" />
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="Lab3.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Author.h" />
     <ClInclude Include="Date.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

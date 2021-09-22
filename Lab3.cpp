@@ -6,6 +6,7 @@
 #include <string>
 #include <windows.h>
 #include "Date.h"
+#include "Author.h"
 using namespace std;
 
 int main() 
@@ -14,19 +15,8 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	Date date;
-
-	date.Init(31, 12, 14, 1, 1, 13);
-	date.Display();
-	printf("\n\n");
-
-	date.Read();
-	printf("\n\n");
-	date.Display();
-	printf("\n\n");
-
-	date.Now();
-	date.Display();
-
+	Author baby;
+	Date data;
+	data.Read();
 	return 0;
 }

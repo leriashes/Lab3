@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
+#include <conio.h>
 #include "date.h"
 #include "Date.h"
 #include <ctime>
@@ -39,6 +40,45 @@ Date::~Date()
 
 }
 
+//Ввод времени
+void Date::ReadTime()
+{
+	char time[6], digit;
+
+	printf("Введите время (в формате HH:MM:SS): ");
+	for (int i = 0; i < 7; i++)
+	{
+		digit = _getch();
+		if (i == 6 && digit == '\r')
+			i++;
+		else if (i < 6 && digit >= '0' && digit <= '9' &&
+			(digit <= '2' ||
+				i == 1 && (digit == '3' || time[0] <= '1') ||
+				(i == 2 || i == 4) && digit <= '5' ||
+				i == 3 || i == 5))
+		{
+			time[i] = digit;
+			printf("%c", digit);
+			if (i % 2 == 1 && i < 5)
+				printf(":");
+		}
+		else if (digit == '\b' && i > 0)
+		{
+			i -= 2;
+			if (i % 2 == 0)
+				printf("\b \b");
+			printf("\b \b");
+
+			if (i == -1)
+				printf(" ");
+		}
+		else
+			i--;
+	}
+
+	return;
+}
+
 //Инициализация всех полей
 void Date::Init(int seconds, int minutes, int hours, int day, int month, int year) 
 {
@@ -54,6 +94,7 @@ void Date::Init(int seconds, int minutes, int hours, int day, int month, int yea
 //Ввод значений всех полей
 void Date::Read() 
 {
+	ReadTime();
 	scanf("%d %d %d %d %d %d", &hour, &min, &sec, &day, &month, &year);
 	while (getchar() != '\n');
 	return;
