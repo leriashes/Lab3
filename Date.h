@@ -1,6 +1,7 @@
 #pragma once
 class Date	//Дата
 {
+private:
 	int sec;	//Секунды
 	int min;	//Минуты
 	int hour;	//Часы
@@ -9,7 +10,7 @@ class Date	//Дата
 	int year;	//Год
 
 public:
-	void InitDate();
-	void ReadDate();
-	void DisplayDate();
+	void Init(int seconds, int minutes, int hours, int day, int month, int year);	//Инициализация всех полей
+	void Read();	//Ввод значений всех полей
+	void Display();	//Вывод значений всех полей
 };
