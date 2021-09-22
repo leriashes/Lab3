@@ -10,6 +10,11 @@ private:
 	int year;	//Год
 
 public:
+	Date();		//Конструктор
+	Date(int day, int month, int year);		//Конструктор с параметром (только дата)
+	Date(int seconds, int minutes, int hours, int day, int month, int year);	//Конструктор с параметром (дата и время)
+	~Date();	//Деструктор
+
 	void Init(int seconds, int minutes, int hours, int day, int month, int year);	//Инициализация всех полей
 	void Read();	//Ввод значений всех полей
 	void Display();	//Вывод значений всех полей
