@@ -19,8 +19,13 @@ int main()
 	date.Init(31, 12, 14, 1, 1, 13);
 	date.Display();
 	printf("\n\n");
+
 	date.Read();
 	printf("\n\n");
+	date.Display();
+	printf("\n\n");
+
+	date.Now();
 	date.Display();
 
 	return 0;
