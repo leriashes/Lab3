@@ -16,7 +16,9 @@ int main()
 	SetConsoleOutputCP(1251);
 
 	Author baby;
-	Date data;
-	data.Read();
+	Date data, data1;
+	data.Init(59, 9, 1, 24, 9, 2021);
+	data1.Now();
+	(data.Compare(data1)).Display();
 	return 0;
 }

@@ -1,7 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <conio.h>
-#include "date.h"
 #include "Date.h"
 #include <ctime>
 
@@ -168,4 +167,119 @@ void Date::Now()
 	tm* timeinfo = localtime(&seconds);
 	Init(timeinfo->tm_sec, timeinfo->tm_min, timeinfo->tm_hour, timeinfo->tm_mday, timeinfo->tm_mon + 1, timeinfo->tm_year + 1900);
 	return;
+}
+
+//Сравнение дат
+Date Date::Compare(Date end_date)
+{
+	Date date;
+
+	date.year = end_date.year - year;
+
+	if (month > end_date.month)
+	{
+		for (int i = 1; i < 13; i++)
+		{
+			if (i >= month || i < end_date.month)
+			{
+				if (i == 1 || i == 3 || i == 5 || i == 7 || i == 8 || i == 10 || i == 12)
+					date.day += 31;
+				else if (i == 2)
+				{
+					date.day += 28;
+					if (i >= month && year % 4 == 0 || i < end_date.month && end_date.year % 4 == 0)
+						date.day++;
+				}
+				else
+					date.day += 30;
+			}
+
+		}
+
+		if (date.year > 0)
+			date.year--;
+		else
+			date.year = date.day = 0;
+	}
+	else if (month == end_date.month)
+	{
+		date.day = end_date.day - day;
+	}
+	else
+	{
+		for (int i = 1; i < 13; i++)
+		{
+			if (i >= month && i < end_date.month)
+			{
+				if (i == 1 || i == 3 || i == 5 || i == 7 || i == 8 || i == 10 || i == 12)
+					date.day += 31;
+				else if (i == 2)
+				{
+					date.day += 28;
+					if (i >= month && year % 4 == 0 || i < end_date.month && end_date.year % 4 == 0)
+						date.day++;
+				}
+				else
+					date.day += 30;
+			}
+
+		}
+
+		date.day += end_date.day - day - 1;
+	}
+
+	date.month = 0;
+
+	if (date.day >= 0)
+	{
+		date.hour = 24 - hour + end_date.hour;
+		if (date.day + date.year == 0)
+			date.hour -= 24;
+		else
+		{
+			if (date.hour >= 24)
+				date.hour -= 24;
+			else
+				date.day--;
+		}
+
+		date.min = 60 - min + end_date.min;
+		if (date.hour + date.day + date.year == 0)
+			date.min -= 60;
+		else
+		{
+			if (date.min >= 60)
+				date.min -= 60;
+			else
+				date.hour--;
+		}
+
+		date.min = 60 - min + end_date.min;
+		if (date.hour + date.day + date.year == 0)
+			date.min -= 60;
+		else
+		{
+			if (date.min >= 60)
+				date.min -= 60;
+			else
+				date.hour--;
+		}
+
+		date.sec = 60 - sec + end_date.sec;
+		if (date.min + date.hour + date.day + date.year == 0)
+			date.sec -= 60;
+		else
+		{
+			if (date.sec >= 60)
+				date.sec -= 60;
+			else
+				date.min--;
+		}
+	}
+
+	if (date.day < 0 || date.year < 0 || date.hour < 0 || date.min < 0 || date.sec < 0)
+		date.year = date.day = date.hour = date.min = date.sec = 0;
+
+
+	return date;
 }

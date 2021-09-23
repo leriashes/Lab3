@@ -22,4 +22,5 @@ public:
 	void Read();	//Ввод значений всех полей
 	void Display();	//Вывод значений всех полей
 	void Now();		//Текущая дата
+	Date Compare(Date end_date);		//Сравнение дат
 };
