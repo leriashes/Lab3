@@ -156,9 +156,9 @@ void Date::Read()
 //¬ывод значений всех полей
 void Date::Display(const char* format) 
 {
-	char form[][16] = {"hh:mm:ss", "hh:mm", "mm:ss", "DD.MM.YYYY", "DD/MM/YYYY", "MM.DD.YYYY", "DD-MM-YYYY", "YYYY-MM-DD", "CompareResult", "CompareResultRU"};
+	char form[][16] = {"hh:mm:ss", "hh:mm", "mm:ss", "DD.MM.YYYY", "DD/MM/YYYY", "MM.DD.YYYY", "DD-MM-YYYY", "YYYY-MM-DD", "CompareResult", "CompareResultRU", "all"};
 	int f = 1;
-	for (int i = 0; i < 10 && f; i++)
+	for (int i = 0; i < 11 && f; i++)
 	{
 		if (strcmp(format, form[i]) == 0)
 		{
@@ -169,15 +169,15 @@ void Date::Display(const char* format)
 			else if (i == 2)
 				printf("%02d:%02d", min, sec);
 			else if (i == 3)
-				printf("%02d.%02d.%02d", day, month, year);
+				printf("%02d.%02d.%04d", day, month, year);
 			else if (i == 4)
-				printf("%02d/%02d/%02d", day, month, year);
+				printf("%02d/%02d/%04d", day, month, year);
 			else if (i == 5)
-				printf("%02d.%02d.%02d", month, day, year);
+				printf("%02d.%02d.%04d", month, day, year);
 			else if (i == 6)
-				printf("%02d-%02d-%02d", day, month, year);
+				printf("%02d-%02d-%04d", day, month, year);
 			else if (i == 7)
-				printf("%02d-%02d-%02d", year, month, day);
+				printf("%04d-%02d-%02d", year, month, day);
 			else if (i == 8)
 			{
 				int k = 0;
@@ -230,7 +230,7 @@ void Date::Display(const char* format)
 				if (k == 0)
 					printf("The time has already come. ");
 			}
-			else
+			else if (i == 9)
 			{
 				int k = 0;
 
@@ -298,7 +298,13 @@ void Date::Display(const char* format)
 					printf("Ёто врем€ уже наступило. ");
 			}
 		}
+		
+		if (i == 10)
+			f = 0;
 	}
+
+	if (!f)
+		printf("%02d:%02d:%02d %02d.%02d.%04d", hour, min, sec, day, month, year);
 
 	return;
 }
