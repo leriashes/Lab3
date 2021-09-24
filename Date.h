@@ -9,18 +9,18 @@ private:
 	int month;	//Месяц
 	int year;	//Год
 
-	void ReadTime();	//Ввод только времени
-	void ReadDate();	//Ввод только даты
-
 public:
 	Date();		//Конструктор
 	Date(int day, int month, int year);		//Конструктор с параметром (только дата)
 	Date(int seconds, int minutes, int hours, int day, int month, int year);	//Конструктор с параметром (дата и время)
 	~Date();	//Деструктор
 
+	void ReadTime();	//Ввод только времени
+	void ReadDate();	//Ввод только даты
+
 	void Init(int seconds, int minutes, int hours, int day, int month, int year);	//Инициализация всех полей
 	void Read();	//Ввод значений всех полей
-	void Display();	//Вывод значений всех полей
+	void Display(const char* format);	//Вывод значений всех полей
 	void Now();		//Текущая дата
 	Date Compare(Date end_date);		//Сравнение дат
 };

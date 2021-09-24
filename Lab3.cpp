@@ -17,8 +17,8 @@ int main()
 
 	Author baby;
 	Date data, data1;
-	data.Init(59, 9, 1, 24, 9, 2021);
+	data.Init(59, 0, 1, 28, 9, 2019);
 	data1.Now();
-	(data.Compare(data1)).Display();
+	(data.Compare(data1)).Display("CompareResult");
 	return 0;
 }

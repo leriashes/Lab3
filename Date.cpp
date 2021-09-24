@@ -149,14 +149,92 @@ void Date::Read()
 	ReadTime();
 	printf("\n");
 	ReadDate();
-	Display();
+	Display("DD.MM.YYYY");
+	printf(" ");
+	Display("hh:mm:ss");
 	return;
 }
 
 //Вывод значений всех полей
-void Date::Display() 
+void Date::Display(const char* format) 
 {
-	printf("%02d:%02d:%02d, %02d.%02d.%04d", hour, min, sec, day, month, year);
+	char form[][15] = {"hh:mm:ss", "hh:mm", "mm:ss", "DD.MM.YYYY", "DD/MM/YYYY", "MM.DD.YYYY", "DD-MM-YYYY", "YYYY-MM-DD", "CompareResult"};
+	int f = 1;
+	for (int i = 0; i < 9 && f; i++)
+	{
+		if (strcmp(format, form[i]) == 0)
+		{
+			if (i == 0)
+				printf("%02d:%02d:%02d", hour, min, sec);
+			else if (i == 1)
+				printf("%02d:%02d", hour, min);
+			else if (i == 2)
+				printf("%02d:%02d", min, sec);
+			else if (i == 3)
+				printf("%02d.%02d.%02d", day, month, year);
+			else if (i == 4)
+				printf("%02d/%02d/%02d", day, month, year);
+			else if (i == 5)
+				printf("%02d.%02d.%02d", month, day, year);
+			else if (i == 6)
+				printf("%02d-%02d-%02d", day, month, year);
+			else if (i == 7)
+				printf("%02d-%02d-%02d", year, month, day);
+			else
+			{
+				int k = 0;
+
+				if (year > 0)
+				{
+					if (year > 1)
+						printf("%d years ", year);
+					else
+						printf("%d year ", year);
+					k++;
+				}
+
+				if (day > 0)
+				{
+					if (day > 1)
+						printf("%d days ", day);
+					else
+						printf("%d day ", day);
+					k++;
+				}
+
+				if (hour > 0)
+				{
+					if (hour > 1)
+						printf("%d hours ", hour);
+					else
+						printf("%d hour ", hour);
+					k++;
+				}
+
+				if (min > 0)
+				{
+					if (min > 1)
+						printf("%d minutes ", min);
+					else
+						printf("%d minute ", min);
+					k++;
+				}
+
+				if (sec > 0)
+				{
+					if (sec > 1)
+						printf("%d seconds ", sec);
+					else
+						printf("%d second ", sec);
+					k++;
+				}
+
+				if (k == 0)
+					printf("The time has already come. ");
+			}
+		}
+	}
+
 	return;
 }
 
@@ -279,7 +357,6 @@ Date Date::Compare(Date end_date)
 
 	if (date.day < 0 || date.year < 0 || date.hour < 0 || date.min < 0 || date.sec < 0)
 		date.year = date.day = date.hour = date.min = date.sec = 0;
-
 
 	return date;
 }
