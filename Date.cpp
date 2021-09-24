@@ -297,6 +297,9 @@ void Date::Display(const char* format)
 				if (k == 0)
 					printf("Это время уже наступило. ");
 			}
+
+			if (i < 10)
+				i = 11;
 		}
 		
 		if (i == 10)
