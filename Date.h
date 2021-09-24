@@ -23,4 +23,5 @@ public:
 	void Display(const char* format);	//Вывод значений всех полей
 	void Now();		//Текущая дата
 	Date Compare(Date end_date);		//Сравнение дат
+	Date Add(Date add_date);		//Прибавление времени к дате
 };

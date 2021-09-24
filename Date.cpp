@@ -317,9 +317,9 @@ void Date::Now()
 //Сравнение дат
 Date Date::Compare(Date end_date)
 {
-	Date date;
+	Date result;
 
-	date.year = end_date.year - year;
+	result.year = end_date.year - year;
 
 	if (month > end_date.month)
 	{
@@ -328,40 +328,40 @@ Date Date::Compare(Date end_date)
 			if (i >= month || i < end_date.month)
 			{
 				if (i == 1 || i == 3 || i == 5 || i == 7 || i == 8 || i == 10 || i == 12)
-					date.day += 31;
+					result.day += 31;
 				else if (i == 2)
 				{
-					date.day += 28;
+					result.day += 28;
 					if (i >= month && year % 4 == 0 || i < end_date.month && end_date.year % 4 == 0)
-						date.day++;
+						result.day++;
 				}
 				else
-					date.day += 30;
+					result.day += 30;
 			}
 
 		}
 
-		if (date.year > 0)
-			date.year--;
+		if (result.year > 0)
+			result.year--;
 	}
 	else if (month == end_date.month)
 	{
-		date.day = end_date.day - day;
-		if (date.day < 0)
+		result.day = end_date.day - day;
+		if (result.day < 0)
 		{
-			date.year--;
+			result.year--;
 			for (int i = 1; i < 13; i++)
 			{
 				if (i == 1 || i == 3 || i == 5 || i == 7 || i == 8 || i == 10 || i == 12)
-					date.day += 31;
+					result.day += 31;
 				else if (i == 2)
 				{
-					date.day += 28;
+					result.day += 28;
 					if (i >= month && year % 4 == 0 || i < end_date.month && end_date.year % 4 == 0)
-						date.day++;
+						result.day++;
 				}
 				else
-					date.day += 30;
+					result.day += 30;
 			}
 		}
 
@@ -373,73 +373,129 @@ Date Date::Compare(Date end_date)
 			if (i >= month && i < end_date.month)
 			{
 				if (i == 1 || i == 3 || i == 5 || i == 7 || i == 8 || i == 10 || i == 12)
-					date.day += 31;
+					result.day += 31;
 				else if (i == 2)
 				{
-					date.day += 28;
+					result.day += 28;
 					if (i >= month && year % 4 == 0 || i < end_date.month && end_date.year % 4 == 0)
-						date.day++;
+						result.day++;
 				}
 				else
-					date.day += 30;
+					result.day += 30;
 			}
 
 		}
 
-		date.day += end_date.day - day - 1;
+		result.day += end_date.day - day - 1;
 	}
 
-	date.month = 0;
+	result.month = 0;
 
-	if (date.day >= 0)
+	if (result.day >= 0)
 	{
-		date.hour = 24 - hour + end_date.hour;
-		if (date.day + date.year == 0)
-			date.hour -= 24;
+		result.hour = 24 - hour + end_date.hour;
+		if (result.day + result.year == 0)
+			result.hour -= 24;
 		else
 		{
-			if (date.hour >= 24)
-				date.hour -= 24;
+			if (result.hour >= 24)
+				result.hour -= 24;
 			else
-				date.day--;
+				result.day--;
 		}
 
-		date.min = 60 - min + end_date.min;
-		if (date.hour + date.day + date.year == 0)
-			date.min -= 60;
+		result.min = 60 - min + end_date.min;
+		if (result.hour + result.day + result.year == 0)
+			result.min -= 60;
 		else
 		{
-			if (date.min >= 60)
-				date.min -= 60;
+			if (result.min >= 60)
+				result.min -= 60;
 			else
-				date.hour--;
+				result.hour--;
 		}
 
-		date.min = 60 - min + end_date.min;
-		if (date.hour + date.day + date.year == 0)
-			date.min -= 60;
+		result.min = 60 - min + end_date.min;
+		if (result.hour + result.day + result.year == 0)
+			result.min -= 60;
 		else
 		{
-			if (date.min >= 60)
-				date.min -= 60;
+			if (result.min >= 60)
+				result.min -= 60;
 			else
-				date.hour--;
+				result.hour--;
 		}
 
-		date.sec = 60 - sec + end_date.sec;
-		if (date.min + date.hour + date.day + date.year == 0)
-			date.sec -= 60;
+		result.sec = 60 - sec + end_date.sec;
+		if (result.min + result.hour + result.day + result.year == 0)
+			result.sec -= 60;
 		else
 		{
-			if (date.sec >= 60)
-				date.sec -= 60;
+			if (result.sec >= 60)
+				result.sec -= 60;
 			else
-				date.min--;
+				result.min--;
 		}
 	}
 
-	if (date.day < 0 || date.year < 0 || date.hour < 0 || date.min < 0 || date.sec < 0)
-		date.year = date.day = date.hour = date.min = date.sec = 0;
+	if (result.day < 0 || result.year < 0 || result.hour < 0 || result.min < 0 || result.sec < 0)
+		result.year = result.day = result.hour = result.min = result.sec = 0;
 
-	return date;
+	return result;
+}
+
+//Прибавление времени к дате
+Date Date::Add(Date add_date)
+{
+	Date result(sec + add_date.sec, min + add_date.min, hour + add_date.hour, day + add_date.day, month + add_date.month, year + add_date.year);
+
+	while (result.sec >= 60)
+	{
+		result.sec -= 60;
+		result.min += 1;
+	}
+
+	while (result.min >= 60)
+	{
+		result.min -= 60;
+		result.hour += 1;
+	}
+
+	while (result.hour >= 24)
+	{
+		result.hour -= 24;
+		result.day += 1;
+	}
+
+	int f = 1;
+
+	while (f)
+	{
+		if (result.day > 31 && (result.month == 1 || result.month == 3 || result.month == 5 || result.month == 7 || result.month == 8 || result.month == 10 || result.month == 12))
+			result.day -= 31;
+		else if (result.month == 2 && result.day > 28)
+		{
+			if (result.day > 29 && result.year % 4 == 0)
+				result.day -= 29;
+			else
+				result.day -= 28;
+		}
+		else if (result.day > 30)
+			result.day -= 30;
+		else
+			f = 0;
+
+		if (f)
+		{
+			result.month++;
+
+			if (result.month >= 13)
+			{
+				result.month -= 12;
+				result.year++;
+			}
+		}
+	}
+
+	return result;
 }
