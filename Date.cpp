@@ -44,7 +44,7 @@ void Date::ReadTime()
 {
 	char time[6], digit;
 
-	printf("¬ведите врем€ (в формате HH:MM:SS): ");
+	printf("¬ведите врем€ (в формате hh:mm:ss): ");
 	for (int i = 0; i < 7; i++)
 	{
 		digit = _getch();
