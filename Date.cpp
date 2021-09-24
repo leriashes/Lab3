@@ -158,9 +158,9 @@ void Date::Read()
 //Вывод значений всех полей
 void Date::Display(const char* format) 
 {
-	char form[][15] = {"hh:mm:ss", "hh:mm", "mm:ss", "DD.MM.YYYY", "DD/MM/YYYY", "MM.DD.YYYY", "DD-MM-YYYY", "YYYY-MM-DD", "CompareResult"};
+	char form[][16] = {"hh:mm:ss", "hh:mm", "mm:ss", "DD.MM.YYYY", "DD/MM/YYYY", "MM.DD.YYYY", "DD-MM-YYYY", "YYYY-MM-DD", "CompareResult", "CompareResultRU"};
 	int f = 1;
-	for (int i = 0; i < 9 && f; i++)
+	for (int i = 0; i < 10 && f; i++)
 	{
 		if (strcmp(format, form[i]) == 0)
 		{
@@ -180,7 +180,7 @@ void Date::Display(const char* format)
 				printf("%02d-%02d-%02d", day, month, year);
 			else if (i == 7)
 				printf("%02d-%02d-%02d", year, month, day);
-			else
+			else if (i == 8)
 			{
 				int k = 0;
 
@@ -232,6 +232,73 @@ void Date::Display(const char* format)
 				if (k == 0)
 					printf("The time has already come. ");
 			}
+			else
+			{
+				int k = 0;
+
+				if (year > 0)
+				{
+					printf("%d ", year);
+					if (year % 10 == 1 && year % 100 != 11)
+						printf("год ");
+					else if (year % 10 >= 2 && year % 10 <= 4 && (year % 100 < 12 || year % 100 > 14))
+						printf("года ");
+					else
+						printf("лет ");
+					k++;
+				}
+
+				if (day > 0)
+				{
+					printf("%d ", day);
+					if (day % 10 == 1 && day % 100 != 11)
+						printf("день ");
+					else if (day % 10 >= 2 && day % 10 <= 4 && (day % 100 < 12 || day % 100 > 14))
+						printf("дня ");
+					else
+						printf("дней ");
+					k++;
+				}
+
+				if (hour > 0)
+				{
+					printf("%d ", hour);
+					if (hour % 10 == 1 && hour % 100 != 11)
+						printf("час ");
+					else if (hour % 10 >= 2 && hour % 10 <= 4 && (hour % 100 < 12 || hour % 100 > 14))
+						printf("часа ");
+					else
+						printf("часов "); 
+					k++;
+				}
+
+				if (min > 0)
+				{
+					printf("%d ", min);
+					if (min % 10 == 1 && min % 100 != 11)
+						printf("минута ");
+					else if (min % 10 >= 2 && min % 10 <= 4 && (min % 100 < 12 || min % 100 > 14))
+						printf("минуты ");
+					else
+						printf("минут ");
+					k++;
+				}
+
+				if (sec > 0)
+				{
+					printf("%d ", sec);
+					if (sec % 10 == 1 && sec % 100 != 11)
+						printf("секунда ");
+					else if (sec % 10 >= 2 && sec % 10 <= 4 && (sec % 100 < 12 || sec % 100 > 14))
+						printf("секунды ");
+					else
+						printf("секунд ");
+					k++;
+				}
+
+				if (k == 0)
+					printf("The time has already come. ");
+			}
 		}
 	}
 
@@ -276,12 +343,28 @@ Date Date::Compare(Date end_date)
 
 		if (date.year > 0)
 			date.year--;
-		else
-			date.year = date.day = 0;
 	}
 	else if (month == end_date.month)
 	{
 		date.day = end_date.day - day;
+		if (date.day < 0)
+		{
+			date.year--;
+			for (int i = 1; i < 13; i++)
+			{
+				if (i == 1 || i == 3 || i == 5 || i == 7 || i == 8 || i == 10 || i == 12)
+					date.day += 31;
+				else if (i == 2)
+				{
+					date.day += 28;
+					if (i >= month && year % 4 == 0 || i < end_date.month && end_date.year % 4 == 0)
+						date.day++;
+				}
+				else
+					date.day += 30;
+			}
+		}
+
 	}
 	else
 	{
