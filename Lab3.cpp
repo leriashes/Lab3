@@ -15,11 +15,12 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	Author baby;
 	Date data, data1;
 	data.Init(0, 0, 0, -28, 0, 0);
 	data1.Now();
 	(data.Compare(data1)).Display("CompareResultRU");
 	data1.Add(data);
+
+	Author baby("Пушкин А.С.", data1, "Россия");
 	return 0;
 }
