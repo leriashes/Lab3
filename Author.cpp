@@ -119,3 +119,41 @@ void Author::Read()
 
 	return;
 }
+
+void Author::Display(const char* format)
+{
+	char form[][21] = { "FullName", "FullName (Country)", "FullName (BirthDate)", "all" };
+	int f = 1;
+
+	printf("%s ", full_name);
+
+	for (int i = 0; i < 4 && f; i++)
+	{
+		if (strcmp(format, form[i]) == 0)
+		{
+			if (i == 1)
+				printf("(%s)", country);
+			else if (i == 2)
+			{
+				printf("(");
+				birth.Display("DD.MM.YYYY");
+				printf(")");
+			}
+
+			if (i < 3)
+				i = 4;
+		}
+
+		if (i == 3)
+			f = 0;
+	}
+
+	if (!f)
+	{
+		printf("(");
+		birth.Display("DD.MM.YYYY");
+		printf(", %s)", country);
+	}
+
+	return;
+}

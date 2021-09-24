@@ -23,6 +23,12 @@ int main()
 
 	Author baby("Пушкин А.С.", data1, "Россия");
 	printf("\n");
-	baby.Read();
+	baby.Display("all");
+	printf("\n");
+	baby.Display("FullName");
+	printf("\n"); 
+	baby.Display("FullName (Country)");
+	printf("\n");
+	baby.Display("FullName (BirthDate)");
 	return 0;
 }
