@@ -22,5 +22,7 @@ int main()
 	data1.Add(data);
 
 	Author baby("Пушкин А.С.", data1, "Россия");
+	printf("\n");
+	baby.Read();
 	return 0;
 }

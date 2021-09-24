@@ -10,6 +10,12 @@ private:
 public:
 	Author();	//Конструктор
 	Author(const char* full_name, Date birth_date, const char* country);	//Конструктор с параметром
+	Author(const char* full_name, int day, int month, int year, const char* country);	//Конструктор с параметром
 	~Author();		//Деструктор
+
+	void Init(const char* full_name, Date birth_date, const char* country);		 //Инициализация всех полей
+	void Init(const char* full_name, int day, int month, int year, const char* country);	//Инициализация всех полей
+	void Read();	//Ввод значений всех полей
+	void Display(const char* format);	//Вывод значений всех полей
 };
 

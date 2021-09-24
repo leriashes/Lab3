@@ -149,9 +149,7 @@ void Date::Read()
 	ReadTime();
 	printf("\n");
 	ReadDate();
-	Display("DD.MM.YYYY");
-	printf(" ");
-	Display("hh:mm:ss");
+
 	return;
 }
 
@@ -297,7 +295,7 @@ void Date::Display(const char* format)
 				}
 
 				if (k == 0)
-					printf("The time has already come. ");
+					printf("Это время уже наступило. ");
 			}
 		}
 	}
