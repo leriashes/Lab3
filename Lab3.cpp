@@ -6,6 +6,7 @@
 #include "Date.h"
 #include "Author.h"
 #include "Address.h"
+#include "Reader.h"
 
 int main() 
 {
@@ -22,5 +23,7 @@ int main()
 	Address house;
 	printf("\n\n");
 	house.Display();
+
+	Reader pers("Мария", data, house, 1234567890);
 	return 0;
 }
