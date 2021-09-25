@@ -2,12 +2,10 @@
 #include <iostream>
 #include <conio.h>
 #include <locale.h>
-#include <stdio.h>
-#include <string>
 #include <windows.h>
 #include "Date.h"
 #include "Author.h"
-using namespace std;
+#include "Address.h"
 
 int main() 
 {
@@ -16,22 +14,13 @@ int main()
 	SetConsoleOutputCP(1251);
 
 	Date data, data1;
-	data.Init(0, 0, 0, -28, 0, 0);
+	data.Init(0, 0, 0, 28, 0, 0);
 	data1.Now();
 	(data.Compare(data1)).Display("all");
 	data1.Add(data);
 
-	Author baby("Пушкин А.С.", data1, "Россия");
-	printf("\n");
-	baby.Display("all");
-	printf("\n");
-	baby.Display("FullName");
-	printf("\n"); 
-	baby.Display("FullName (Country)");
-	printf("\n");
-	baby.Display("FullName (BirthDate)");
+	Address house;
+	house.Read();
 
-	int a = baby.BornIn("Америка");
-	a = baby.BornIn("Россия");
 	return 0;
 }
