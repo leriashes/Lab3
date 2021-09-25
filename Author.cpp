@@ -157,3 +157,14 @@ void Author::Display(const char* format)
 
 	return;
 }
+
+//ѕроверка родилс€ ли автор в указанной стране
+bool Author::BornIn(const char* country)
+{
+	bool result = false;
+
+	if (strcmp(this->country, country) == 0)
+		result = true;
+
+	return result;
+}

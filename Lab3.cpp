@@ -30,5 +30,8 @@ int main()
 	baby.Display("FullName (Country)");
 	printf("\n");
 	baby.Display("FullName (BirthDate)");
+
+	int a = baby.BornIn("Америка");
+	a = baby.BornIn("Россия");
 	return 0;
 }
