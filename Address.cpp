@@ -31,3 +31,16 @@ Address::Address(const char* city, const char* street, int house_number, int fla
 Address::~Address()
 {
 }
+
+//Инициализация всех полей
+void Address::Init(const char* city, const char* street, int house_number, int flat_number)
+{
+	strncpy(this->city, city, 30);
+	this->city[29] = '\0';
+
+	strncpy(this->street, street, 40);
+	this->street[39] = '\0';
+
+	house = house_number;
+	flat = flat_number;
+}
