@@ -20,7 +20,7 @@ int main()
 	data1.Add(data);
 
 	Address house;
-	house.Read();
-
+	printf("\n\n");
+	house.Display();
 	return 0;
 }
