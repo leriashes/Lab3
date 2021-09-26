@@ -33,14 +33,12 @@ int main()
 	Address address_st;
 	Publishing publ_st;
 	Reader reader_st;
-	Author author_st;
 	Book book_st;
 
 	//Динамические переменные
 	Address* address_d;
 	Publishing* publ_d;
 	Reader* reader_d;
-	Author* author_d;
 	Book* book_d;
 
 
@@ -77,7 +75,7 @@ int main()
 	date_d2->Display("all");
 	printf("\n");
 
-	//Ввод только времени
+	/*//Ввод только времени
 	printf("\nВвод только времени\n");
 
 	date_st.ReadTime();
@@ -99,7 +97,7 @@ int main()
 
 	date_d->ReadDate();
 	printf("\n*date_d = ");
-	date_d->Display("all");
+	date_d->Display("all");*/
 
 	//Вывод значений полей в выбранном формате
 	printf("\n\nВывод значений полей в выбранном формате (помимо полного вывода)\ndate_st (hh:mm:ss) = ");
@@ -202,6 +200,97 @@ int main()
 	delete date_d;
 	delete date_d1;
 	delete date_d2;
+
+
+	//Работа с объектами класса Author
+	printf("\n\n\n\nРабота со объектами класса Author\n");
+
+	//Статические переменные
+	Author author_st,	//Создание через конструктор без параметров
+		//Создание через конструкторы с параметрами
+		author_st1("Петров Пётр Петрович", date_st, "Украина"),
+		author_st2("Сидорова Светлана Сергеевна", 12, 12, 1972, "Беларусь");
+
+	//Динамические переменные
+	Author* author_d, * author_d1, * author_d2;
+	author_d = new Author();	//Создание через конструктор без параметров
+	//Создание через конструкторы с параметрами
+	author_d1 = new Author("Кузнецов Кирилл Корнеевич", date_st2, "Казахстан");
+	author_d2 = new Author("Третьякова Таисия Тимуровна", date_st1, "Россия");
+
+	//Печать созданных объектов
+	printf("\nПечать данных статических объектов\nauthor_st = ");
+	author_st.Display("all");
+	printf("\nauthor_st1 = ");
+	author_st1.Display("all");
+	printf("\nauthor_st2 = ");
+	author_st2.Display("all");
+	printf("\n");
+
+	printf("\nПечать данных динамических объектов\n*author_d = ");
+	author_d->Display("all");
+	printf("\n*author_d1 = ");
+	author_d1->Display("all");
+	printf("\n*author_d2 = ");
+	author_d2->Display("all");
+	printf("\n");
+
+	/*//Ввод значений всех полей объекта
+	printf("\nВвод значений всех полей объекта\n");
+
+	author_st.Read();
+	printf("\nauthor_st = ");
+	author_st.Display("all");
+	printf("\n\n");
+
+	author_d->Read();
+	printf("\n*author_d = ");
+	author_d->Display("all");*/
+
+	//Вывод значений полей в выбранном формате
+	printf("\n\nВывод значений полей в выбранном формате (помимо полного вывода)\nauthor_st (FullName) = ");
+	author_st.Display("FullName");
+	printf("\nauthor_st (FullName (Country)) = ");
+	author_st.Display("FullName (Country)");
+	printf("\nauthor_st (FullName (BirthDate)) = ");
+	author_st.Display("FullName (BirthDate)");
+
+	printf("\n\n*author_d (FullName) = ");
+	author_d->Display("FullName");
+	printf("\n*author_d (FullName (Country)) = ");
+	author_d->Display("FullName (Country)");
+	printf("\n*author_d (FullName (BirthDate)) = ");
+	author_d->Display("FullName (BirthDate)");
+
+	//Инициализация значений
+	printf("\n\nИнициализация значений");
+	author_st.Init("Паркер Энн", date_st, "США");
+	printf("\nauthor_st = ");
+	author_st.Display("all");
+
+	author_d->Init("Старикова Татьяна Алексеевна", date_st1, "Россия");
+	printf("\n*author_d = ");
+	author_d->Display("all");
+
+	//Проверка родился ли автор в заданной стране
+	printf("\n\nПроверка родился ли автор в заданной стране\n");
+	author_st.Display("all");
+	printf(" и страна Россия");
+	if (author_st.BornIn("Россия"))
+		printf(": да.\n");
+	else
+		printf(": нет.\n");
+
+	author_d->Display("all");
+	printf(" и страна Россия");
+	if (author_d->BornIn("Россия"))
+		printf(": да.");
+	else
+		printf(": нет.");
+
+	delete author_d;
+	delete author_d1;
+	delete author_d2;
 
 	/*//Работа со структурой address
 	printf("\n\n\nРабота со структурой address\n");
