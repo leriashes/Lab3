@@ -210,3 +210,22 @@ void Book::Read()
 
 	return;
 }
+
+//Вывод значений всех полей
+void Book::Display()
+{
+	printf("Название: \"%s\"", title);
+	printf("\nЖанр: %s", genre);
+	printf("\nКоличество страниц: %d", pages_number);
+	printf("\nГод публикации: %d", publ_year);
+	printf("\nАвтор: ");
+	author.Display("FullName");
+	printf("\nИздательство: ");
+	publishing.Display();
+	if (reader != NULL) {
+		printf("\nЧитатель: ");
+		reader->Display("[DocNumber] FullName");
+	}
+
+	return;
+}
