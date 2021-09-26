@@ -22,6 +22,6 @@ public:
 
 	void Init(const char* title, Author author, int pages_number, const char* genre, Publishing publishing, int publication_year);		//Инициализация всех полей
 	void Init(const char* title, Author author, int pages_number, const char* genre, Reader* reader, Publishing publishing, int publication_year);		//Инициализация всех полей
-
+	void Read();	//Ввод значений всех полей
 };
 
