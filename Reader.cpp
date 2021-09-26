@@ -32,6 +32,9 @@ Reader::Reader(const char* full_name, Date birth_date, Address address, int doc_
 	birth = birth_date;
 	this->address = address;
 
+	if (doc_number <= 0)
+		strcpy(this->doc_number, "01 10 123456");
+
 	for (int i = 0; doc_number > 0 && i < 25; i++)
 	{
 		for (int j = i; j > 0; j--)
@@ -42,9 +45,6 @@ Reader::Reader(const char* full_name, Date birth_date, Address address, int doc_
 		if (doc_number == 0)
 			this->doc_number[i + 1] = '\0';
 	}
-
-	if (doc_number <= 0)
-		strcpy(this->doc_number, "01 10 123456");
 }
 
 //Деструктор
@@ -76,6 +76,9 @@ void Reader::Init(const char* full_name, Date birth_date, Address address, int d
 	birth = birth_date;
 	this->address = address;
 
+	if (doc_number <= 0)
+		strcpy(this->doc_number, "01 10 123456");
+	
 	for (int i = 0; doc_number > 0 && i < 25; i++)
 	{
 		for (int j = i; j > 0; j--)
@@ -86,9 +89,6 @@ void Reader::Init(const char* full_name, Date birth_date, Address address, int d
 		if (doc_number == 0)
 			this->doc_number[i + 1] = '\0';
 	}
-
-	if (doc_number <= 0)
-		strcpy(this->doc_number, "01 10 123456");
 
 	return;
 }

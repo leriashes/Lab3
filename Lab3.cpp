@@ -331,6 +331,99 @@ int main()
 	delete address_d1;
 
 
+
+	//Работа с объектами класса Reader
+	printf("\n\n\n\nРабота со объектами класса Reader\n");
+
+	//Статические переменные
+	Reader reader_st,	//Создание через конструктор без параметров
+		//Создание через конструкторы с параметрами
+		reader_st1("Петров Пётр Петрович", date_st, address_st, "0110 120954"),
+		reader_st2("Сидорова Светлана Сергеевна", date_st1, address_st1, 987654);
+
+	//Динамические переменные
+	Reader* reader_d, * reader_d1, * reader_d2;
+	reader_d = new Reader();	//Создание через конструктор без параметров
+	//Создание через конструкторы с параметрами
+	reader_d1 = new Reader("Кузнецов Кирилл Корнеевич", date_st2, address_st, "0112 765423");
+	reader_d2 = new Reader("Третьякова Таисия Тимуровна", date_st1, address_st1, 54321789);
+
+	//Печать созданных объектов
+	printf("\nПечать данных статических объектов\nreader_st = ");
+	reader_st.Display("all");
+	printf("\nreader_st1 = ");
+	reader_st1.Display("all");
+	printf("\nreader_st2 = ");
+	reader_st2.Display("all");
+	printf("\n");
+
+	printf("\nПечать данных динамических объектов\n*reader_d = ");
+	reader_d->Display("all");
+	printf("\n*reader_d1 = ");
+	reader_d1->Display("all");
+	printf("\n*reader_d2 = ");
+	reader_d2->Display("all");
+	printf("\n");
+
+	/*//Ввод значений всех полей объекта
+	printf("\nВвод значений всех полей объекта\n");
+
+	reader_st.Read();
+	printf("\nreader_st = ");
+	reader_st.Display("all");
+	printf("\n\n");
+
+	reader_d->Read();
+	printf("\n*reader_d = ");
+	reader_d->Display("all");*/
+
+	//Вывод значений полей в выбранном формате
+	printf("\n\nВывод значений полей в выбранном формате (помимо полного вывода)\nreader_st (FullName) = ");
+	reader_st.Display("FullName");
+	printf("\nreader_st ([DocNumber] FullName) = ");
+	reader_st.Display("[DocNumber] FullName");
+	printf("\nreader_st (FullName (BirthDate)) = ");
+	reader_st.Display("FullName (BirthDate)");
+
+	printf("\n\n*reader_d (FullName) = ");
+	reader_d->Display("FullName");
+	printf("\n*reader_d ([DocNumber] FullName) = ");
+	reader_d->Display("[DocNumber] FullName");
+	printf("\n*reader_d (FullName (BirthDate)) = ");
+	reader_d->Display("FullName (BirthDate)");
+
+	//Инициализация значений
+	printf("\n\nИнициализация значений");
+	reader_st.Init("Кузнецов Кирилл Корнеевич", date_st2, address_st, "0112 765423");
+	printf("\nreader_st = ");
+	reader_st.Display("all");
+
+	reader_d->Init("Кузнецов Тимофей Корнеевич", date_st2, address_st, 0112765423);
+	printf("\n*reader_d = ");
+	reader_d->Display("all");
+
+	//Проверка является ли дата днём рождения читателя
+	printf("\n\nПроверка родился ли автор в заданной стране\n");
+	reader_st2.Display("all");
+	printf(" и ");
+	date_st2.Display("DD.MM.YYYY");
+	if (reader_st2.IsBirthday(date_st2))
+		printf(": да.\n");
+	else
+		printf(": нет.\n");
+
+	reader_d1->Display("all");
+	printf(" и ");
+	date_st2.Display("DD.MM.YYYY");
+	if (reader_d1->IsBirthday(date_st2))
+		printf(": да.");
+	else
+		printf(": нет.");
+
+	delete reader_d;
+	delete reader_d1;
+	delete reader_d2;
+
 	/*
 	//Работа со структурой publishing
 	printf("\n\n\nРабота со структурой publishing\n");
@@ -349,24 +442,6 @@ int main()
 	printPublishing(*publ_d);
 
 	free(publ_d);
-
-
-
-	//Работа со структурой reader
-	printf("\n\n\nРабота со структурой reader\n");
-	//Ввод данных
-	printf("Ввод данных в статическую переменную\n");
-	reader_st = enterReader();
-
-	printf("\nВвод данных в динамическую переменную\n");
-	*reader_d = enterReader();
-
-	//Вывод данных
-	printf("\n\nПечать данных статической переменной\n");
-	printReader(reader_st);
-
-	printf("\n\nПечать данных динамической переменной\n");
-	printReader(*reader_d);
 
 
 
