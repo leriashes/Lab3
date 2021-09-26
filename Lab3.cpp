@@ -11,37 +11,6 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	/*Date data, data1;
-	data.Init(0, 0, 0, 26, 9, 2019);
-	data1.Now();
-	(data.Compare(data1)).Display("all");
-	data1.Add(data);
-
-	Address house;
-	printf("\n\n");
-	house.Display();
-
-	Reader pers("Мария", data, house, 1234567890);
-	//pers.Read();
-	pers.Display("all");
-	printf("\n%d", pers.IsBirthday(data1));
-	data.Init(0, 0, 0, 28, 0, 21);
-	printf("\n%d", pers.IsBirthday(data));*/
-
-
-	//Статические переменные
-	Address address_st;
-	Publishing publ_st;
-	Reader reader_st;
-	Book book_st;
-
-	//Динамические переменные
-	Address* address_d;
-	Publishing* publ_d;
-	Reader* reader_d;
-	Book* book_d;
-
-
 	//Работа с объектами класса Date
 	printf("Работа со объектами класса Date\n");
 
@@ -202,6 +171,7 @@ int main()
 	delete date_d2;
 
 
+
 	//Работа с объектами класса Author
 	printf("\n\n\n\nРабота со объектами класса Author\n");
 
@@ -292,26 +262,76 @@ int main()
 	delete author_d1;
 	delete author_d2;
 
-	/*//Работа со структурой address
-	printf("\n\n\nРабота со структурой address\n");
-	//Ввод данных
-	printf("Ввод данных в статическую переменную\n");
-	address_st = enterAddress();
-
-	printf("\nВвод данных в динамическую переменную\n");
-	*address_d = enterAddress();
-
-	//Вывод данных
-	printf("\n\nПечать данных статической переменной\n");
-	printAddress(address_st);
-
-	printf("\n\nПечать данных динамической переменной\n");
-	printAddress(*address_d);
-
-	free(address_d);
 
 
+	//Работа с объектами класса Address
+	printf("\n\n\n\nРабота со объектами класса Address\n");
 
+	//Статические переменные
+	Address address_st,	//Создание через конструктор без параметров
+		address_st1("г. Новосибирск", "ул. Сиреневая", 12, 4);		//Создание через конструкторы с параметрами
+
+	//Динамические переменные
+	Address* address_d, * address_d1;
+	address_d = new Address();	//Создание через конструктор без параметров
+	address_d1 = new Address("г. Барнаул", "ул. Антона Петрова", 154, 50);	//Создание через конструктор с параметрами
+
+	//Печать созданных объектов
+	printf("\nПечать данных статических объектов\naddress_st = ");
+	address_st.Display();
+	printf("\naddress_st1 = ");
+	address_st1.Display();
+	printf("\n");
+
+	printf("\nПечать данных динамических объектов\n*address_d = ");
+	address_d->Display();
+	printf("\n*address_d1 = ");
+	address_d1->Display();
+	printf("\n");
+
+	/*//Ввод значений всех полей объекта
+	printf("\nВвод значений всех полей объекта\n");
+
+	address_st.Read();
+	printf("\naddress_st = ");
+	address_st.Display();
+	printf("\n\n");
+
+	address_d->Read();
+	printf("\n*address_d = ");
+	address_d->Display();*/
+
+	//Инициализация значений
+	printf("\n\nИнициализация значений");
+	address_st.Init("г. Троицк", "ул. Текстильщиков", 6, 2);
+	printf("\naddress_st = ");
+	address_st.Display();
+
+	address_d->Init("г. Барнаул", "ул. Энтузиастов", 55, 23);
+	printf("\n*address_d = ");
+	address_d->Display();
+
+	//Проверка совпадения города
+	printf("\n\nПроверка родился ли автор в заданной стране\n");
+	address_st.Display();
+	printf(" и г. Барнаул");
+	if (address_st.City("г. Барнаул"))
+		printf(": да.\n");
+	else
+		printf(": нет.\n");
+
+	address_d->Display();
+	printf(" и г. Барнаул");
+	if (address_d->City("г. Барнаул"))
+		printf(": да.");
+	else
+		printf(": нет.");
+
+	delete address_d;
+	delete address_d1;
+
+
+	/*
 	//Работа со структурой publishing
 	printf("\n\n\nРабота со структурой publishing\n");
 	//Ввод данных
@@ -347,26 +367,6 @@ int main()
 
 	printf("\n\nПечать данных динамической переменной\n");
 	printReader(*reader_d);
-
-
-
-	//Работа со структурой author
-	printf("\n\n\nРабота со структурой author\n");
-	//Ввод данных
-	printf("Ввод данных в статическую переменную\n");
-	author_st = enterAuthor();
-
-	printf("\nВвод данных в динамическую переменную\n");
-	*author_d = enterAuthor();
-
-	//Вывод данных
-	printf("\n\nПечать данных статической переменной\n");
-	printAuthor(author_st);
-
-	printf("\n\nПечать данных динамической переменной\n");
-	printAuthor(*author_d);
-
-	free(author_d);
 
 
 

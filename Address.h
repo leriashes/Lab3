@@ -15,5 +15,6 @@ public:
 	void Init(const char* city, const char* street, int house_number, int flat_number);		//Инициализация всех полей
 	void Read();	//Ввод значений всех полей
 	void Display();		//Вывод значений всех полей
+	bool City(const char* city);	//Проверка совпадения города
 };
 

@@ -162,3 +162,14 @@ void Address::Display()
 	printf("%s, %s %d, %d", city, street, house, flat);
 	return;
 }
+
+//Проверка совпадения города
+bool Address::City(const char* city)
+{
+	bool result = false;
+
+	if (strcmp(this->city, city) == 0)
+		result = true;
+
+	return result;
+}
