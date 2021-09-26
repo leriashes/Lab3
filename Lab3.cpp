@@ -491,44 +491,95 @@ int main()
 
 	delete publishing_d;
 	delete publishing_d1;
-	/*
-
-	//Работа со структурой book
-	printf("\n\n\nРабота со структурой book\n");
-	//Ввод данных
-	printf("Ввод данных в статическую переменную\n");
-	book_st = enterBook();
-
-	printf("\n\nВвод данных в динамическую переменную\n");
-	*book_d = enterBook();
-
-	//Вывод данных
-	printf("\n\nПечать данных статической переменной\n");
-	printBook(book_st);
-
-	printf("\n\nПечать данных динамической переменной\n");
-	printBook(*book_d);
 
 
-	//Добавление читателя
-	book_st.reader_info = &reader_st;
-	printf("\n\n\nПечать данных статической переменной\n");
-	printBook(book_st);
 
-	book_st.reader_info = reader_d;
-	printf("\n\nПечать данных статической переменной\n");
-	printBook(book_st);
+	//Работа с объектами класса Book
+	printf("\n\n\n\nРабота со объектами класса Book\n");
 
-	book_d->reader_info = &reader_st;
-	printf("\n\nПечать данных динамической переменной\n");
-	printBook(*book_d);
+	//Статические переменные
+	Book book_st,	//Создание через конструктор без параметров
+		//Создание через конструкторы с параметрами
+		book_st1("Новый мир", author_st1, 121, "Фантастика", publishing_st1, 2012),
+		book_st2("Петька и Васька", author_st2, 76, "Рассказы", publishing_st, 2019);
 
-	book_d->reader_info = reader_d;
-	printf("\n\nПечать данных динамической переменной\n");
-	printBook(*book_d);
+	//Динамические переменные
+	Book* book_d, * book_d1, * book_d2;
+	book_d = new Book();	//Создание через конструктор без параметров
+	//Создание через конструкторы с параметрами
+	book_d1 = new Book("Новый мир", author_st1, 121, "Фантастика", publishing_st1, 2012);
+	book_d2 = new Book("Петька и Васька", author_st2, 76, "Рассказы", publishing_st, 2019);
 
-	free(book_d);
-	free(reader_d);*/
+	//Печать созданных объектов
+	printf("\nПечать данных статических объектов\nbook_st ");
+	book_st.Display();
+	printf("\n\nbook_st1 ");
+	book_st1.Display();
+	printf("\n\nbook_st2 ");
+	book_st2.Display();
+	printf("\n");
+
+	printf("\nПечать данных динамических объектов\n*book_d ");
+	book_d->Display();
+	printf("\n\n*book_d1 ");
+	book_d1->Display();
+	printf("\n\n*book_d2 ");
+	book_d2->Display();
+	printf("\n");
+
+	//Ввод значений всех полей объекта
+	/*printf("\nВвод значений всех полей объекта\n");
+
+	book_st.Read();
+	printf("\n\nbook_st ");
+	book_st.Display();
+	printf("\n\n");
+
+	book_d->Read();
+	printf("\n\n*book_d ");
+	book_d->Display();*/
+
+	//Инициализация значений
+	printf("\n\nИнициализация значений");
+	book_st.Init("Петька и Кот", author_st2, 65, "Ужасы", publishing_st, 2005);
+	printf("\nbook_st ");
+	book_st.Display();
+
+	book_d->Init("Наш мир", author_st1, 1021, "Энциклопедия", &reader_st, publishing_st1, 2013);
+	printf("\n\n*book_d ");
+	book_d->Display();
+
+	//Привязка читателя
+	printf("\n\nПривязка читателя\nbook_st1 ");
+	book_st1.AddReader(&reader_st);
+	book_st1.Display();
+	
+	//Сравнение читателей книг
+	printf("\n\nСравнение читателей книг\n");
+	book_st2.Display();
+	printf("\n\nи \n\n");
+	book_st1.Display();
+	if (book_st2.CmpReader(book_st1))
+		printf("\n\nодин и тот же читатель.\n");
+	else
+		printf("\n\nразные читатели.\n\n");
+
+	book_d->Display();
+	printf("\n\nи \n\n");
+	book_st1.Display();
+	if (book_d->CmpReader(book_st1))
+		printf("\n\nодин и тот же читатель.\n");
+	else
+		printf("\n\nразные читатели.\n");
+
+	//Отвязка читателя
+	printf("\n\nОтвязка читателя\nbook_st1 ");
+	book_st1.AddReader(NULL);
+	book_st1.Display();
+
+	delete book_d;
+	delete book_d1;
+	delete book_d2;
 
 
 	return 0;

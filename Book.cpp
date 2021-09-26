@@ -152,7 +152,7 @@ void Book::Read()
 		pages_number = pages_number * 10 + result[i] - 48;
 
 
-	printf("Введите жанр: ");
+	printf("\nВведите жанр: ");
 
 	for (int i = 0; i < 30; i++)
 	{
@@ -176,7 +176,7 @@ void Book::Read()
 			i--;
 	}
 
-
+	printf("\n");
 	publishing.Read();
 
 
@@ -228,4 +228,28 @@ void Book::Display()
 	}
 
 	return;
+}
+
+//Привязка читателя
+void Book::AddReader(Reader* reader)
+{
+	this->reader = reader;
+	return;
+}
+
+//Проверка находится ли книга в библиотеке
+bool Book::InLib()
+{
+	bool result = false;
+
+	if (reader == NULL)
+		result = true;
+
+	return result;
+}
+
+//Сравнение читателей книг
+bool Book::CmpReader(Book second_book)
+{
+	return (reader == second_book.reader);
 }
