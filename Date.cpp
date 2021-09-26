@@ -506,3 +506,9 @@ Date Date::Add(Date add_date)
 
 	return result;
 }
+
+//Проверка является ли дата годовщиной другой
+bool Date::IsAnniversary(Date second_date)
+{
+	return (day == second_date.day && month == second_date.month && year <= second_date.year);
+}

@@ -193,3 +193,9 @@ void Reader::Display(const char* format)
 
 	return;
 }
+
+////Проверка является ли день днём рождения читателя
+bool Reader::IsBirthday(Date day)
+{
+	return birth.IsAnniversary(day);
+}

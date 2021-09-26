@@ -24,4 +24,5 @@ public:
 	void Now();		//Текущая дата
 	Date Compare(Date end_date);		//Сравнение дат
 	Date Add(Date add_date);		//Прибавление времени к дате
+	bool IsAnniversary(Date second_date);	//Проверка является ли дата годовщиной другой
 };

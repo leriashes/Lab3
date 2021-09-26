@@ -15,7 +15,7 @@ int main()
 	SetConsoleOutputCP(1251);
 
 	Date data, data1;
-	data.Init(0, 0, 0, 28, 0, 0);
+	data.Init(0, 0, 0, 26, 9, 2019);
 	data1.Now();
 	(data.Compare(data1)).Display("all");
 	data1.Add(data);
@@ -27,5 +27,8 @@ int main()
 	Reader pers("Мария", data, house, 1234567890);
 	//pers.Read();
 	pers.Display("all");
+	printf("\n%d", pers.IsBirthday(data1));
+	data.Init(0, 0, 0, 28, 0, 21);
+	printf("\n%d", pers.IsBirthday(data));
 	return 0;
 }
