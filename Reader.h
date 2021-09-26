@@ -18,5 +18,6 @@ public:
 	void Init(const char* full_name, Date birth_date, Address address, const char* doc_number);		//Инициализация всех полей
 	void Init(const char* full_name, Date birth_date, Address address, int doc_number);		//Инициализация всех полей
 	void Read();	//Ввод всех полей
+	void Display(const char* format);		//Вывод значений полей в выбранном формате
 };
 
