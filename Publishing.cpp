@@ -97,3 +97,14 @@ void Publishing::Display()
 	printf("%s (%s)", name, city);
 	return;
 }
+
+//Проверка находится ли издательство в заданном городе
+bool Publishing::IsHere(const char* city)
+{
+	bool result = false;
+
+	if (strcmp(this->city, city) == 0)
+		result = true;
+
+	return result;
+}
