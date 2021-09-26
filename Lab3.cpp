@@ -44,7 +44,7 @@ int main()
 	date_d2->Display("all");
 	printf("\n");
 
-	/*//Ввод только времени
+	//Ввод только времени
 	printf("\nВвод только времени\n");
 
 	date_st.ReadTime();
@@ -66,7 +66,7 @@ int main()
 
 	date_d->ReadDate();
 	printf("\n*date_d = ");
-	date_d->Display("all");*/
+	date_d->Display("all");
 
 	//Вывод значений полей в выбранном формате
 	printf("\n\nВывод значений полей в выбранном формате (помимо полного вывода)\ndate_st (hh:mm:ss) = ");
@@ -205,7 +205,7 @@ int main()
 	author_d2->Display("all");
 	printf("\n");
 
-	/*//Ввод значений всех полей объекта
+	//Ввод значений всех полей объекта
 	printf("\nВвод значений всех полей объекта\n");
 
 	author_st.Read();
@@ -215,7 +215,7 @@ int main()
 
 	author_d->Read();
 	printf("\n*author_d = ");
-	author_d->Display("all");*/
+	author_d->Display("all");
 
 	//Вывод значений полей в выбранном формате
 	printf("\n\nВывод значений полей в выбранном формате (помимо полного вывода)\nauthor_st (FullName) = ");
@@ -289,7 +289,7 @@ int main()
 	address_d1->Display();
 	printf("\n");
 
-	/*//Ввод значений всех полей объекта
+	//Ввод значений всех полей объекта
 	printf("\nВвод значений всех полей объекта\n");
 
 	address_st.Read();
@@ -299,7 +299,7 @@ int main()
 
 	address_d->Read();
 	printf("\n*address_d = ");
-	address_d->Display();*/
+	address_d->Display();
 
 	//Инициализация значений
 	printf("\n\nИнициализация значений");
@@ -365,7 +365,7 @@ int main()
 	reader_d2->Display("all");
 	printf("\n");
 
-	/*//Ввод значений всех полей объекта
+	//Ввод значений всех полей объекта
 	printf("\nВвод значений всех полей объекта\n");
 
 	reader_st.Read();
@@ -375,7 +375,7 @@ int main()
 
 	reader_d->Read();
 	printf("\n*reader_d = ");
-	reader_d->Display("all");*/
+	reader_d->Display("all");
 
 	//Вывод значений полей в выбранном формате
 	printf("\n\nВывод значений полей в выбранном формате (помимо полного вывода)\nreader_st (FullName) = ");
@@ -451,7 +451,7 @@ int main()
 	publishing_d1->Display();
 	printf("\n");
 
-	/*//Ввод значений всех полей объекта
+	//Ввод значений всех полей объекта
 	printf("\nВвод значений всех полей объекта\n");
 
 	publishing_st.Read();
@@ -461,7 +461,7 @@ int main()
 
 	publishing_d->Read();
 	printf("\n*publishing_d = ");
-	publishing_d->Display();*/
+	publishing_d->Display();
 
 	//Инициализация значений
 	printf("\n\nИнициализация значений");
@@ -528,7 +528,7 @@ int main()
 	printf("\n");
 
 	//Ввод значений всех полей объекта
-	/*printf("\nВвод значений всех полей объекта\n");
+	printf("\nВвод значений всех полей объекта\n");
 
 	book_st.Read();
 	printf("\n\nbook_st ");
@@ -537,7 +537,7 @@ int main()
 
 	book_d->Read();
 	printf("\n\n*book_d ");
-	book_d->Display();*/
+	book_d->Display();
 
 	//Инициализация значений
 	printf("\n\nИнициализация значений");
