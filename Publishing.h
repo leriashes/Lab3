@@ -11,5 +11,6 @@ public:
 	~Publishing();		//Деструктор
 
 	void Init(const char* name, const char* city);	//Инициализация всех полей
+	void Read();	//Ввод всех полей
 };
 
