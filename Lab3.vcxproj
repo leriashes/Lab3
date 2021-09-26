@@ -143,12 +143,14 @@
     <ClCompile Include="Author.cpp" />
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="Lab3.cpp" />
+    <ClCompile Include="Publishing.cpp" />
     <ClCompile Include="Reader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Address.h" />
     <ClInclude Include="Author.h" />
     <ClInclude Include="Date.h" />
+    <ClInclude Include="Publishing.h" />
     <ClInclude Include="Reader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
