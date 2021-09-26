@@ -12,5 +12,6 @@ public:
 
 	void Init(const char* name, const char* city);	//Инициализация всех полей
 	void Read();	//Ввод всех полей
+	void Display(); //Вывод значений всех полей
 };
 

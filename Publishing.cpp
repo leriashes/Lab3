@@ -90,3 +90,10 @@ void Publishing::Read()
 
 	return;
 }
+
+//Вывод значений всех полей
+void Publishing::Display()
+{
+	printf("%s (%s)", name, city);
+	return;
+}
