@@ -3,10 +3,7 @@
 #include <conio.h>
 #include <locale.h>
 #include <windows.h>
-#include "Date.h"
-#include "Author.h"
-#include "Address.h"
-#include "Reader.h"
+#include "Book.h"
 
 int main() 
 {
