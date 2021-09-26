@@ -424,26 +424,74 @@ int main()
 	delete reader_d1;
 	delete reader_d2;
 
+
+
+	//Работа с объектами класса Publishing
+	printf("\n\n\n\nРабота со объектами класса Publishing\n");
+
+	//Статические переменные
+	Publishing publishing_st,	//Создание через конструктор без параметров
+		publishing_st1("Издательство №2", "г. Барнаул");		//Создание через конструктор с параметрами
+
+	//Динамические переменные
+	Publishing* publishing_d, * publishing_d1;
+	publishing_d = new Publishing();	//Создание через конструктор без параметров
+	publishing_d1 = new Publishing("Мир", "г. Томск");		//Создание через конструктор с параметрами
+
+	//Печать созданных объектов
+	printf("\nПечать данных статических объектов\npublishing_st = ");
+	publishing_st.Display();
+	printf("\npublishing_st1 = ");
+	publishing_st1.Display();
+	printf("\n");
+
+	printf("\nПечать данных динамических объектов\n*publishing_d = ");
+	publishing_d->Display();
+	printf("\n*publishing_d1 = ");
+	publishing_d1->Display();
+	printf("\n");
+
+	/*//Ввод значений всех полей объекта
+	printf("\nВвод значений всех полей объекта\n");
+
+	publishing_st.Read();
+	printf("\npublishing_st = ");
+	publishing_st.Display();
+	printf("\n\n");
+
+	publishing_d->Read();
+	printf("\n*publishing_d = ");
+	publishing_d->Display();*/
+
+	//Инициализация значений
+	printf("\n\nИнициализация значений");
+	publishing_st.Init("Паркер", "г. Вашингтон");
+	printf("\npublishing_st = ");
+	publishing_st.Display();
+
+	publishing_d->Init("Старт", "г. Ростов");
+	printf("\n*publishing_d = ");
+	publishing_d->Display();
+
+	//Проверка находится ли издательство в заданном городе
+	printf("\n\nПроверка находится ли издательство в заданном городе\n");
+	publishing_st.Display();
+	printf(" и г. Москва");
+	if (publishing_st.IsHere("г. Москва"))
+		printf(": да.\n");
+	else
+		printf(": нет.\n");
+
+	publishing_d->Display();
+	printf(" и г. Барнаул");
+	if (publishing_d->IsHere("г. Барнаул"))
+		printf(": да.");
+	else
+		printf(": нет.");
+
+	delete publishing_d;
+	delete publishing_d1;
 	/*
-	//Работа со структурой publishing
-	printf("\n\n\nРабота со структурой publishing\n");
-	//Ввод данных
-	printf("Ввод данных в статическую переменную\n");
-	publ_st = enterPublishing();
-
-	printf("\nВвод данных в динамическую переменную\n");
-	*publ_d = enterPublishing();
-
-	//Вывод данных
-	printf("\n\nПечать данных статической переменной\n");
-	printPublishing(publ_st);
-
-	printf("\n\nПечать данных динамической переменной\n");
-	printPublishing(*publ_d);
-
-	free(publ_d);
-
-
 
 	//Работа со структурой book
 	printf("\n\n\nРабота со структурой book\n");
