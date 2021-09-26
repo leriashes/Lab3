@@ -24,3 +24,12 @@ Publishing::Publishing(const char* name, const char* city)
 Publishing::~Publishing()
 {
 }
+
+void Publishing::Init(const char* name, const char* city)
+{
+	strncpy(this->name, name, 30);
+	this->name[29] = '\0';
+
+	strncpy(this->city, city, 30);
+	this->city[29] = '\0';
+}
