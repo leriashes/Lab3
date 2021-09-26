@@ -25,5 +25,6 @@ int main()
 	house.Display();
 
 	Reader pers("Мария", data, house, 1234567890);
+	pers.Read();
 	return 0;
 }
