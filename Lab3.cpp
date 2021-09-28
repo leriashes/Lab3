@@ -577,10 +577,82 @@ int main()
 	book_st1.AddReader(NULL);
 	book_st1.Display();
 
+	printf("\n\nНажмите любую клавишу для продолжения...");
+	_getch();
+	system("cls");
+
+	//Работа с динамическим массивом объектов класса и с массивом динамических объектов класса
+	Book *books_mas1, *books_mas2[2];
+
+	books_mas1 = new Book[2];
+
+	for (int i = 0; i < 2; i++)
+		books_mas2[i] = new Book;
+
+	//Вывод объектов
+
+	//Первый массив
+	//Следующие выражения равносильны
+	printf("books_mas1[0]\n");
+	(*books_mas1).Display();
+	printf("\n\n");
+	books_mas1->Display();
+	printf("\n\n");
+	books_mas1[0].Display();
+	printf("\n\n\n");
+
+	printf("\nbooks_mas1[1]\n");
+	(books_mas1 + 1)->Display();
+	printf("\n\n");
+
+	//Второй массив
+	//Следующие выражения равносильны
+	printf("\n*books_mas2[0]\n");
+	(*books_mas2)->Display();
+	printf("\n\n");
+	(*books_mas2[0]).Display();
+	printf("\n\n");
+	books_mas2[0]->Display();
+	printf("\n\n");
+
+	printf("\n*books_mas2[1]\n");
+	books_mas2[1]->Display();
+	printf("\n\n");
+
+	//Изменение значений полей объектов
+	books_mas1[1].Init("Книга 1", author_st, 10, "Объект динамического массива", publishing_st, 2021);
+	books_mas2[1]->Init("Книга 2", author_st1, 10, "Динамический объект массива", publishing_st1, 2021);
+
+	//Вывод объектов
+
+	//Элемент первого массива
+	//Следующие выражения равносильны
+	printf("\nbooks_mas1[1]\n");
+	(*(books_mas1 + 1)).Display();
+	printf("\n\n");
+	(books_mas1 + 1)->Display();
+	printf("\n\n");
+	books_mas1[1].Display();
+	printf("\n\n\n");
+
+	//Следующие выражения равносильны
+	printf("\n*books_mas2[1]\n");
+	(*(books_mas2 + 1))->Display();
+	printf("\n\n");
+	(*books_mas2[1]).Display();
+	printf("\n\n");
+	books_mas2[1]->Display();
+	printf("\n\n");
+
+
+	delete[] books_mas1;
+	
+	for (int i = 0; i < 2; i++)
+		delete books_mas2[i];
+
 	delete book_d;
 	delete book_d1;
 	delete book_d2;
-
 
 	return 0;
 }
