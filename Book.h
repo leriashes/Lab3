@@ -27,5 +27,6 @@ public:
 	void AddReader(Reader* reader);		//Привязка читателя
 	bool InLib();	//Проверка находится ли книга в библиотеке
 	bool CmpReader(Book second_book);		//Сравнение читателей книг
+	bool Belongs(Reader *reader);	//Проверка принадлежности книги читателю
 };
 

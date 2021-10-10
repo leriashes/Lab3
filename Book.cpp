@@ -253,3 +253,9 @@ bool Book::CmpReader(Book second_book)
 {
 	return (reader == second_book.reader);
 }
+
+//ѕроверка принадлежности книги читателю
+bool Book::Belongs(Reader *reader)
+{
+	return this->reader == reader;
+}
