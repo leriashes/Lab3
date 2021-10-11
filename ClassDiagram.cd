@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Address">
+    <Position X="3.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAYIAAACQAgAAAAAgACAAACAAACAAA=</HashCode>
+      <FileName>Address.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Author">
+    <Position X="6.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAwAAAAAAAAAAgAAAAQAgAAAAAAACAAACAAAAAAI=</HashCode>
+      <FileName>Author.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="birth" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Book">
+    <Position X="8.75" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAADQAAAAABAAAAAhYAiAAAAAAAAAAAHgAAQAAA=</HashCode>
+      <FileName>Book.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="reader" />
+      <Field Name="publishing" />
+      <Field Name="author" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Date">
+    <Position X="6.25" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAIsAAAAAAAQABAAAAQAAQAgACQAAAABCABCAAAAAAA=</HashCode>
+      <FileName>Date.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Publishing">
+    <Position X="8.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAACQAgAAQEAAAAAAACAAAAACA=</HashCode>
+      <FileName>Publishing.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Reader">
+    <Position X="3.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAQIAAAAAAAAAAAAAAwAgAAIAAAAAABACAAAAAAI=</HashCode>
+      <FileName>Reader.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="address" />
+      <Field Name="birth" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

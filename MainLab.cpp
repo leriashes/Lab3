@@ -572,6 +572,24 @@ int main()
 	else
 		printf("\n\nразные читатели.\n");
 
+	//Проверка принадлежности книги читателю
+	printf("\n\nПроверка принадлежности книги читателю\n");
+	book_st1.Display();
+	printf("\n\nи читатель:\n\n");
+	reader_st.Display("all");
+	if (book_st1.Belongs(&reader_st))
+		printf("\n\nкнига принадлежит читателю.\n\n");
+	else
+		printf("\n\nкнига не принадлежит читателю.\n\n");
+
+	book_st1.Display();
+	printf("\n\nи читатель:\n\n");
+	reader_st1.Display("all");
+	if (book_st1.Belongs(&reader_st1))
+		printf("\n\nкнига принадлежит читателю.\n");
+	else
+		printf("\n\nкнига не принадлежит читателю.\n\n");
+
 	//Отвязка читателя
 	printf("\n\nОтвязка читателя\nbook_st1 ");
 	book_st1.AddReader(NULL);
