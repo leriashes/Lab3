@@ -63,63 +63,6 @@ void Author::Init(const char* full_name, int day, int month, int year, const cha
 	this->country[29] = '\0';
 }
 
-//Ввод значений всех полей
-void Author::Read()
-{
-	printf("Введите ФИО автора: ");
-
-	char letter;
-	for (int i = 0; i < 50; i++)
-	{
-		letter = _getch();
-		if (letter == '\r' )
-		{
-			full_name[i] = '\0';
-			i = 50;
-		}
-		else if (letter == '\b' && i > 0)
-		{
-			i -= 2;
-			printf("\b \b");
-		}
-		else if (letter != '\b' && i < 49)
-		{
-			full_name[i] = letter;
-			printf("%c", letter);
-		}
-		else
-			i--;
-	}
-
-	printf("\nДата рождения\n");
-	birth.ReadDate();
-
-	printf("\nВведите страну происхождения автора: ");
-	for (int i = 0; i < 30; i++)
-	{
-		letter = _getch();
-		if (letter == '\r')
-		{
-			country[i] = '\0';
-			i = 30;
-		}
-		else if (letter == '\b' && i > 0)
-		{
-			i -= 2;
-			printf("\b \b");
-		}
-		else if (letter != '\b' && i < 29)
-		{
-			country[i] = letter;
-			printf("%c", letter);
-		}
-		else
-			i--;
-	}
-
-	return;
-}
-
 //Проверка родился ли автор в указанной стране
 bool Author::BornIn(const char* country)
 {

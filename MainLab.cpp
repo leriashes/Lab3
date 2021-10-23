@@ -210,12 +210,12 @@ int main()
 	//Ввод значений всех полей объекта
 	printf("\nВвод значений всех полей объекта\n");
 
-	author_st.Read();
+	InOut::Read(&author_st);
 	printf("\nauthor_st = ");
 	InOut::Display(author_st, "all");
 	printf("\n\n");
 
-	author_d->Read();
+	InOut::Read(author_d);
 	printf("\n*author_d = ");
 	InOut::Display(*author_d, "all");
 
@@ -294,12 +294,12 @@ int main()
 	//Ввод значений всех полей объекта
 	printf("\nВвод значений всех полей объекта\n");
 
-	address_st.Read();
+	InOut::Read(&address_st);
 	printf("\naddress_st = ");
 	InOut::Display(address_st);
 	printf("\n\n");
 
-	address_d->Read();
+	InOut::Read(address_d);
 	printf("\n*address_d = ");
 	InOut::Display(*address_d);
 
@@ -370,12 +370,12 @@ int main()
 	//Ввод значений всех полей объекта
 	printf("\nВвод значений всех полей объекта\n");
 
-	reader_st.Read();
+	InOut::Read(&reader_st);
 	printf("\nreader_st = ");
 	InOut::Display(reader_st, "all");
 	printf("\n\n");
 
-	reader_d->Read();
+	InOut::Read(reader_d);
 	printf("\n*reader_d = ");
 	InOut::Display(*reader_d, "all");
 
@@ -456,12 +456,12 @@ int main()
 	//Ввод значений всех полей объекта
 	printf("\nВвод значений всех полей объекта\n");
 
-	publishing_st.Read();
+	InOut::Read(&publishing_st);
 	printf("\npublishing_st = ");
 	InOut::Display(publishing_st);
 	printf("\n\n");
 
-	publishing_d->Read();
+	InOut::Read(publishing_d);
 	printf("\n*publishing_d = ");
 	InOut::Display(*publishing_d);
 
@@ -532,12 +532,12 @@ int main()
 	//Ввод значений всех полей объекта
 	printf("\nВвод значений всех полей объекта\n");
 
-	book_st.Read();
+	InOut::Read(&book_st);
 	printf("\n\nbook_st ");
 	InOut::Display(book_st);
 	printf("\n\n");
 
-	book_d->Read();
+	InOut::Read(book_d);
 	printf("\n\n*book_d ");
 	InOut::Display(*book_d);
 

@@ -17,7 +17,6 @@ public:
 
 	void Init(const char* full_name, Date birth_date, Address address, const char* doc_number);		//Инициализация всех полей
 	void Init(const char* full_name, Date birth_date, Address address, int doc_number);		//Инициализация всех полей
-	void Read();	//Ввод всех полей
 	bool IsBirthday(Date day);		//Проверка является ли день днём рождения читателя
 
 	friend class InOut;

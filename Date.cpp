@@ -143,16 +143,6 @@ void Date::Init(int seconds, int minutes, int hours, int day, int month, int yea
 	return;
 }
 
-//Ввод значений всех полей
-void Date::Read() 
-{
-	ReadTime();
-	printf("\n");
-	ReadDate();
-
-	return;
-}
-
 //Текущая дата
 void Date::Now() 
 {
