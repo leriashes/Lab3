@@ -212,7 +212,7 @@ void Book::Read()
 }
 
 //Вывод значений всех полей
-void Book::Display()
+/*void Book::Display()
 {
 	printf("Название: \"%s\"", title);
 	printf("\nЖанр: %s", genre);
@@ -228,7 +228,7 @@ void Book::Display()
 	}
 
 	return;
-}
+}*/
 
 //Привязка читателя
 void Book::AddReader(Reader* reader)

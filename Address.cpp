@@ -156,13 +156,6 @@ void Address::Read()
 	return;
 }
 
-//Вывод значений всех полей
-void Address::Display()
-{
-	printf("%s, %s %d, %d", city, street, house, flat);
-	return;
-}
-
 //Проверка совпадения города
 bool Address::City(const char* city)
 {

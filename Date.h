@@ -20,9 +20,10 @@ public:
 
 	void Init(int seconds, int minutes, int hours, int day, int month, int year);	//Инициализация всех полей
 	void Read();	//Ввод значений всех полей
-	void Display(const char* format);	//Вывод значений полей в выбранном формате
 	void Now();		//Текущая дата
 	Date Compare(Date end_date);		//Сравнение дат
 	Date Add(Date add_date);		//Прибавление времени к дате
 	bool IsAnniversary(Date second_date);	//Проверка является ли дата годовщиной другой
+
+	friend class InOut;
 };

@@ -16,7 +16,8 @@ public:
 	void Init(const char* full_name, Date birth_date, const char* country);		 //Инициализация всех полей
 	void Init(const char* full_name, int day, int month, int year, const char* country);	//Инициализация всех полей
 	void Read();	//Ввод значений всех полей
-	void Display(const char* format);	//Вывод значений полей в выбранном формате
 	bool BornIn(const char* country);	//Проверка родился ли автор в указанной стране
+
+	friend class InOut;
 };
 

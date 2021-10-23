@@ -23,10 +23,12 @@ public:
 	void Init(const char* title, Author author, int pages_number, const char* genre, Publishing publishing, int publication_year);		//Инициализация всех полей
 	void Init(const char* title, Author author, int pages_number, const char* genre, Reader* reader, Publishing publishing, int publication_year);		//Инициализация всех полей
 	void Read();	//Ввод значений всех полей
-	void Display();		//Вывод значений всех полей
+	//void Display();		//Вывод значений всех полей
 	void AddReader(Reader* reader);		//Привязка читателя
 	bool InLib();	//Проверка находится ли книга в библиотеке
 	bool CmpReader(Book second_book);		//Сравнение читателей книг
 	bool Belongs(Reader *reader);	//Проверка принадлежности книги читателю
+
+	friend class InOut;
 };
 

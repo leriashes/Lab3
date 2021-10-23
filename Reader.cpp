@@ -153,47 +153,6 @@ void Reader::Read()
 	return;
 }
 
-//Вывод значений полей в выбранном формате
-void Reader::Display(const char* format)
-{
-	char form[][21] = { "FullName", "[DocNumber] FullName", "FullName (BirthDate)", "all" };
-	int f = 1;
-
-	for (int i = 0; i < 4 && f; i++)
-	{
-		if (strcmp(format, form[i]) == 0)
-		{
-			if (i == 0)
-				printf("%s ", full_name);
-			else if (i == 1)
-				printf("[%s] %s ", doc_number, full_name);
-			else if (i == 2)
-			{
-				printf("%s (", full_name);
-				birth.Display("DD.MM.YYYY");
-				printf(") ");
-			}
-
-			if (i < 3)
-				i = 4;
-		}
-
-		if (i == 3)
-			f = 0;
-	}
-
-	if (!f)
-	{
-		printf("[%s] %s (Дата рождения: ", doc_number, full_name);
-		birth.Display("DD.MM.YYYY");
-		printf(". Адрес проживания: ");
-		address.Display();
-		printf(") ");
-	}
-
-	return;
-}
-
 //Проверка является ли день днём рождения читателя
 bool Reader::IsBirthday(Date day)
 {

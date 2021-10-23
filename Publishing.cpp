@@ -91,13 +91,6 @@ void Publishing::Read()
 	return;
 }
 
-//¬ывод значений всех полей
-void Publishing::Display()
-{
-	printf("%s (%s)", name, city);
-	return;
-}
-
 //ѕроверка находитс€ ли издательство в заданном городе
 bool Publishing::IsHere(const char* city)
 {
