@@ -371,22 +371,24 @@ void InOut::Read(Reader* reader)
 	printf("Введите ФИО читателя: ");
 
 	char letter;
+	reader->full_name.clear();
 	for (int i = 0; i < 50; i++)
 	{
 		letter = _getch();
 		if (letter == '\r')
 		{
-			reader->full_name[i] = '\0';
+			reader->full_name += '\0';
 			i = 50;
 		}
 		else if (letter == '\b' && i > 0)
 		{
+			reader->full_name.pop_back();
 			i -= 2;
 			printf("\b \b");
 		}
 		else if (letter != '\b' && i < 49)
 		{
-			reader->full_name[i] = letter;
+			reader->full_name += letter;
 			printf("%c", letter);
 		}
 		else
@@ -400,22 +402,24 @@ void InOut::Read(Reader* reader)
 	Read(&reader->address);
 
 	printf("\nВведите номер документа, удостовряющего личность: ");
+	reader->doc_number.clear();
 	for (int i = 0; i < 26; i++)
 	{
 		letter = _getch();
 		if (letter == '\r')
 		{
-			reader->doc_number[i] = '\0';
-			i = 30;
+			reader->doc_number += '\0';
+			i = 26;
 		}
 		else if (letter == '\b' && i > 0)
 		{
+			reader->doc_number.pop_back();
 			i -= 2;
 			printf("\b \b");
 		}
-		else if (letter != '\b' && i < 29)
+		else if (letter != '\b' && i < 25)
 		{
-			reader->doc_number[i] = letter;
+			reader->doc_number += letter;
 			printf("%c", letter);
 		}
 		else
@@ -662,12 +666,12 @@ void InOut::Display(Reader reader, const char* format)
 		if (strcmp(format, form[i]) == 0)
 		{
 			if (i == 0)
-				printf("%s ", reader.full_name);
+				cout << reader.full_name + " ";
 			else if (i == 1)
-				printf("[%s] %s ", reader.doc_number, reader.full_name);
+				cout << "[" + reader.doc_number + "] "+ reader.full_name + " ";
 			else if (i == 2)
 			{
-				printf("%s (", reader.full_name);
+				cout << reader.full_name + " (";
 				Display(reader.birth, "DD.MM.YYYY");
 				printf(") ");
 			}
@@ -682,7 +686,7 @@ void InOut::Display(Reader reader, const char* format)
 
 	if (!f)
 	{
-		printf("[%s] %s (Дата рождения: ", reader.doc_number, reader.full_name);
+		cout << "[" + reader.doc_number + "] " + reader.full_name + " (Дата рождения: ";
 		Display(reader.birth, "DD.MM.YYYY");
 		printf(". Адрес проживания: ");
 		Display(reader.address);

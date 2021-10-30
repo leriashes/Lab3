@@ -6,44 +6,40 @@
 //Конструктор
 Reader::Reader()
 {
-	strcpy(full_name, "Иванов Иван Иванович");
-	strcpy(doc_number, "01 10 123456");
+	full_name = "Иванов Иван Иванович";
+	doc_number = "01 10 123456";
 }
 
 //Конструктор с параметром
-Reader::Reader(const char* full_name, Date birth_date, Address address, const char* doc_number)
+Reader::Reader(string full_name, Date birth_date, Address address, string doc_number)
 {
-	strncpy(this->full_name, full_name, 50);
-	this->full_name[49] = '\0';
-
+	this->full_name = full_name;
 	birth = birth_date;
 	this->address = address;
-
-	strncpy(this->doc_number, doc_number, 26);
-	this->full_name[25] = '\0';
+	this->doc_number = doc_number;
 }
 
 //Конструктор с параметром 
-Reader::Reader(const char* full_name, Date birth_date, Address address, int doc_number)
+Reader::Reader(string full_name, Date birth_date, Address address, int doc_number)
 {
-	strncpy(this->full_name, full_name, 50);
-	this->full_name[49] = '\0';
-
+	this->full_name = full_name;
 	birth = birth_date;
 	this->address = address;
 
 	if (doc_number <= 0)
-		strcpy(this->doc_number, "01 10 123456");
+		this->doc_number = "01 10 123456";
 
 	for (int i = 0; doc_number > 0 && i < 25; i++)
 	{
+		this->doc_number += " ";
+
 		for (int j = i; j > 0; j--)
 			this->doc_number[j] = this->doc_number[j - 1];
 
 		this->doc_number[0] = doc_number % 10 + 48;
 		doc_number /= 10;
 		if (doc_number == 0)
-			this->doc_number[i + 1] = '\0';
+			this->doc_number += '\0';
 	}
 }
 
@@ -53,41 +49,37 @@ Reader::~Reader()
 }
 
 //Инициализация всех полей
-void Reader::Init(const char* full_name, Date birth_date, Address address, const char* doc_number)
+void Reader::Init(string full_name, Date birth_date, Address address, string doc_number)
 {
-	strncpy(this->full_name, full_name, 50);
-	this->full_name[49] = '\0';
-
+	this->full_name = full_name;
 	birth = birth_date;
 	this->address = address;
-
-	strncpy(this->doc_number, doc_number, 26);
-	this->full_name[25] = '\0';
+	this->doc_number = doc_number;
 
 	return;
 }
 
 //Инициализация всех полей
-void Reader::Init(const char* full_name, Date birth_date, Address address, int doc_number)
+void Reader::Init(string full_name, Date birth_date, Address address, int doc_number)
 {
-	strncpy(this->full_name, full_name, 50);
-	this->full_name[49] = '\0';
-
+	this->full_name = full_name;
 	birth = birth_date;
 	this->address = address;
 
 	if (doc_number <= 0)
-		strcpy(this->doc_number, "01 10 123456");
-	
+		this->doc_number = "01 10 123456";
+
 	for (int i = 0; doc_number > 0 && i < 25; i++)
 	{
+		this->doc_number += " ";
+
 		for (int j = i; j > 0; j--)
 			this->doc_number[j] = this->doc_number[j - 1];
 
 		this->doc_number[0] = doc_number % 10 + 48;
 		doc_number /= 10;
 		if (doc_number == 0)
-			this->doc_number[i + 1] = '\0';
+			this->doc_number += '\0';
 	}
 
 	return;
