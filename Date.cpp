@@ -343,3 +343,22 @@ bool Date::IsAnniversary(Date second_date)
 {
 	return (day == second_date.day && month == second_date.month && year <= second_date.year);
 }
+
+Date Date::operator+(Date otherdate)
+{
+	return this->Add(otherdate);
+}
+
+Date& Date::operator++()
+{
+	Date one(1, 0, 0);
+	*this = this->Add(one);
+	return *this;
+}
+
+Date Date::operator++(int)
+{
+	Date copy = *this;
+	++(*this);
+	return copy;
+}

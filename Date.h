@@ -15,6 +15,10 @@ public:
 	Date(int seconds, int minutes, int hours, int day, int month, int year);	//Конструктор с параметром (дата и время)
 	~Date();	//Деструктор
 
+	Date operator+(Date otherdate);
+	Date& operator++();
+	Date operator++(int);
+
 	void ReadTime();	//Ввод только времени
 	void ReadDate();	//Ввод только даты
 

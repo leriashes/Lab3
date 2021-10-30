@@ -150,6 +150,16 @@ int main()
 	date_st = date_st.Add(*date_d);
 	InOut::Display(date_st, "all");
 
+	printf("\n\nПрибавление времени *date_d к дате date_st (+): ");
+	InOut::Display(date_st + *date_d, "all");
+
+	++date_st;
+	printf("\n\n++date_st: ");
+	InOut::Display(date_st++, "all");
+
+	printf("\n\ndate_st++: ");
+	InOut::Display(date_st, "all");
+
 	//Проверка является дата годовщиной другой
 	printf("\n\nПроверка является ли вторая дата 'годовщиной' первой\n");
 	InOut::Display(date_st, "all");
@@ -175,7 +185,7 @@ int main()
 
 
 	//Работа с объектами класса Author
-	printf("\n\n\n\nРабота со объектами класса Author\n");
+	/*printf("\n\n\n\nРабота со объектами класса Author\n");
 
 	//Статические переменные
 	Author author_st,	//Создание через конструктор без параметров
@@ -265,7 +275,7 @@ int main()
 	delete author_d2;
 
 
-
+	
 	//Работа с объектами класса Address
 	printf("\n\n\n\nРабота со объектами класса Address\n");
 
@@ -664,7 +674,7 @@ int main()
 
 	delete book_d;
 	delete book_d1;
-	delete book_d2;
+	delete book_d2;*/
 
 	return 0;
 }
