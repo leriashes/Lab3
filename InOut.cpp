@@ -183,22 +183,24 @@ void InOut::Read(Book* book)
 	printf("Введите название книги: ");
 
 	char letter;
-	for (int i = 0; i < 30; i++)
+	book->title.clear();
+	for (int i = 0; i < 50; i++)
 	{
 		letter = _getch();
 		if (letter == '\r')
 		{
-			book->title[i] = '\0';
-			i = 30;
+			book->title += '\0';
+			i = 50;
 		}
 		else if (letter == '\b' && i > 0)
 		{
+			book->title.pop_back();
 			i -= 2;
 			printf("\b \b");
 		}
-		else if (letter != '\b' && i < 29)
+		else if (letter != '\b' && i < 49)
 		{
-			book->title[i] = letter;
+			book->title += letter;
 			printf("%c", letter);
 		}
 		else
@@ -211,22 +213,23 @@ void InOut::Read(Book* book)
 
 
 	printf("\nВведите количество страниц в книге: ");
-	char result[5];
+	string result;
 	for (int i = 0; i < 5; i++)
 	{
 		letter = _getch();
 		if (letter == '\r')
 		{
-			result[i] = '\0';
+			result += '\0';
 			i = 5;
 		}
 		else if (letter >= '0' && letter <= '9' && (i == 0 && letter != '0' || i > 0 && i < 4))
 		{
-			result[i] = letter;
+			result += letter;
 			printf("%c", letter);
 		}
 		else if (letter == '\b' && i > 0)
 		{
+			result.pop_back();
 			i -= 2;
 			printf("\b \b");
 
@@ -235,29 +238,28 @@ void InOut::Read(Book* book)
 			i--;
 	}
 
-	book->pages_number = 0;
-	for (int i = 0; result[i] != '\0'; i++)
-		book->pages_number = book->pages_number * 10 + result[i] - 48;
+	book->pages_number = stoi(result);
 
 
 	printf("\nВведите жанр: ");
-
+	book->genre.clear();
 	for (int i = 0; i < 30; i++)
 	{
 		letter = _getch();
 		if (letter == '\r')
 		{
-			book->genre[i] = '\0';
+			book->genre += '\0';
 			i = 30;
 		}
 		else if (letter == '\b' && i > 0)
 		{
+			book->genre.pop_back();
 			i -= 2;
 			printf("\b \b");
 		}
 		else if (letter != '\b' && i < 29)
 		{
-			book->genre[i] = letter;
+			book->genre += letter;
 			printf("%c", letter);
 		}
 		else
@@ -269,32 +271,31 @@ void InOut::Read(Book* book)
 
 
 	printf("\nВведите год издания книги: ");
+	result.clear();
 	for (int i = 0; i < 5; i++)
 	{
 		letter = _getch();
 		if (letter == '\r')
 		{
-			result[i] = '\0';
+			result += '\0';
 			i = 5;
 		}
 		else if (letter >= '0' && letter <= '9' && (i == 0 && letter != '0' || i > 0 && i < 4))
 		{
-			result[i] = letter;
+			result += letter;
 			printf("%c", letter);
 		}
 		else if (letter == '\b' && i > 0)
 		{
+			result.pop_back();
 			i -= 2;
 			printf("\b \b");
-
 		}
 		else
 			i--;
 	}
 
-	book->publ_year = 0;
-	for (int i = 0; result[i] != '\0'; i++)
-		book->publ_year = book->publ_year * 10 + result[i] - 48;
+	book->publ_year = stoi(result);
 
 	return;
 }
@@ -476,8 +477,8 @@ void InOut::Display(Author author, const char* format)
 
 void InOut::Display(Book book)
 {
-	printf("Название: \"%s\"", book.title);
-	printf("\nЖанр: %s", book.genre);
+	cout << "Название: \"" + book.title + "\"";
+	cout << "\nЖанр: " + book.genre;
 	printf("\nКоличество страниц: %d", book.pages_number);
 	printf("\nГод публикации: %d", book.publ_year);
 	printf("\nАвтор: ");
@@ -695,5 +696,4 @@ void InOut::Display(Reader reader, const char* format)
 
 	return;
 }
-
 
