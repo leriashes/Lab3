@@ -2,36 +2,29 @@
 #include <iostream>
 #include <conio.h>
 #include "Author.h"
+using namespace std;
 
 //Конструктор
 Author::Author()
 {
-	strcpy(full_name, "Иванов Иван Иванович");
-	strcpy(country, "Россия");
+	full_name = "Иванов Иван Иванович";
+	country = "Россия";
 }
 
 //Конструктор с параметром
-Author::Author(const char* full_name, Date birth_date, const char* country)
+Author::Author(string full_name, Date birth_date, string country)
 {
-	strncpy(this->full_name, full_name, 50);
-	this->full_name[49] = '\0';
-
+	this->full_name = full_name;
 	birth = birth_date;
-
-	strncpy(this->country, country, 30);
-	this->country[29] = '\0';
+	this->country = country;
 }
 
 //Конструктор с параметром
-Author::Author(const char* full_name, int day, int month, int year, const char* country)
+Author::Author(string full_name, int day, int month, int year, string country)
 {
-	strncpy(this->full_name, full_name, 50);
-	this->full_name[49] = '\0';
-
+	this->full_name = full_name;
 	birth.Init(0, 0,  0, day, month, year);
-
-	strncpy(this->country, country, 30);
-	this->country[29] = '\0';
+	this->country = country;
 }
 
 //Деструктор
@@ -40,35 +33,27 @@ Author::~Author()
 }
 
 //Инициализация значений всех полей
-void Author::Init(const char* full_name, Date birth_date, const char* country)
+void Author::Init(string full_name, Date birth_date, string country)
 {
-	strncpy(this->full_name, full_name, 50);
-	this->full_name[49] = '\0';
-
+	this->full_name = full_name;
 	birth = birth_date;
-
-	strncpy(this->country, country, 30);
-	this->country[29] = '\0';
+	this->country = country;
 }
 
 //Инициализация значений всех полей
-void Author::Init(const char* full_name, int day, int month, int year, const char* country)
+void Author::Init(string full_name, int day, int month, int year, string country)
 {
-	strncpy(this->full_name, full_name, 50);
-	this->full_name[49] = '\0';
-
+	this->full_name = full_name;
 	birth.Init(0, 0, 0, day, month, year);
-
-	strncpy(this->country, country, 30);
-	this->country[29] = '\0';
+	this->country = country;
 }
 
 //Проверка родился ли автор в указанной стране
-bool Author::BornIn(const char* country)
+bool Author::BornIn(string country)
 {
 	bool result = false;
 
-	if (strcmp(this->country, country) == 0)
+	if (this->country == country)
 		result = true;
 
 	return result;

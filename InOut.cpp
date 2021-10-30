@@ -10,16 +10,15 @@ void InOut::Read(Address* address)
 	printf("Введите название населённого пункта (например: г. Барнаул): ");
 
 	char letter;
-
 	address->city.clear();
 
-	for (int i = 0; i < 30; i++)
+	for (int i = 0; i < 50; i++)
 	{
 		letter = _getch();
 		if (letter == '\r')
 		{
 			address->city += '\0';
-			i = 30;
+			i = 50;
 		}
 		else if (letter == '\b' && i > 0)
 		{
@@ -27,7 +26,7 @@ void InOut::Read(Address* address)
 			i -= 2;
 			printf("\b \b");
 		}
-		else if (letter != '\b' && i < 29)
+		else if (letter != '\b' && i < 49)
 		{
 			address->city += letter;
 			printf("%c", letter);
@@ -38,13 +37,13 @@ void InOut::Read(Address* address)
 
 	printf("\nВведите название улицы (например: ул. Попова): ");
 	address->street.clear();
-	for (int i = 0; i < 40; i++)
+	for (int i = 0; i < 50; i++)
 	{
 		letter = _getch();
 		if (letter == '\r')
 		{
 			address->street += '\0';
-			i = 40;
+			i = 50;
 		}
 		else if (letter == '\b' && i > 0)
 		{
@@ -52,7 +51,7 @@ void InOut::Read(Address* address)
 			i -= 2;
 			printf("\b \b");
 		}
-		else if (letter != '\b' && i < 39)
+		else if (letter != '\b' && i < 49)
 		{
 			address->street += letter;
 			printf("%c", letter);
@@ -107,7 +106,7 @@ void InOut::Read(Address* address)
 		{
 			result.pop_back();
 			i -= 2;
-			printf("\b \b"); 
+			printf("\b \b");
 		}
 		else
 			i--;
@@ -123,22 +122,25 @@ void InOut::Read(Author* author)
 	printf("Введите ФИО автора: ");
 
 	char letter;
+	author->full_name.clear();
+
 	for (int i = 0; i < 50; i++)
 	{
 		letter = _getch();
 		if (letter == '\r')
 		{
-			author->full_name[i] = '\0';
+			author->full_name += '\0';
 			i = 50;
 		}
 		else if (letter == '\b' && i > 0)
 		{
+			author->full_name.pop_back();
 			i -= 2;
 			printf("\b \b");
 		}
 		else if (letter != '\b' && i < 49)
 		{
-			author->full_name[i] = letter;
+			author->full_name += letter;
 			printf("%c", letter);
 		}
 		else
@@ -149,22 +151,24 @@ void InOut::Read(Author* author)
 	author->birth.ReadDate();
 
 	printf("\nВведите страну происхождения автора: ");
-	for (int i = 0; i < 30; i++)
+	author->country.clear();
+	for (int i = 0; i < 50; i++)
 	{
 		letter = _getch();
 		if (letter == '\r')
 		{
-			author->country[i] = '\0';
-			i = 30;
+			author->country += '\0';
+			i = 50;
 		}
 		else if (letter == '\b' && i > 0)
 		{
+			author->country.pop_back();
 			i -= 2;
 			printf("\b \b");
 		}
-		else if (letter != '\b' && i < 29)
+		else if (letter != '\b' && i < 49)
 		{
-			author->country[i] = letter;
+			author->country += letter;
 			printf("%c", letter);
 		}
 		else
@@ -429,17 +433,17 @@ void InOut::Display(Author author, const char* format)
 	char form[][21] = { "FullName", "FullName (Country)", "FullName (BirthDate)", "all" };
 	int f = 1;
 
-	printf("%s ", author.full_name);
+	cout << author.full_name;
 
 	for (int i = 0; i < 4 && f; i++)
 	{
 		if (strcmp(format, form[i]) == 0)
 		{
 			if (i == 1)
-				printf("(%s)", author.country);
+				cout << " (" + author.country + ")";
 			else if (i == 2)
 			{
-				printf("(");
+				printf(" (");
 				Display(author.birth, "DD.MM.YYYY");
 				printf(")");
 			}
@@ -454,9 +458,9 @@ void InOut::Display(Author author, const char* format)
 
 	if (!f)
 	{
-		printf("(");
+		printf(" (");
 		Display(author.birth, "DD.MM.YYYY");
-		printf(", %s)", author.country);
+		cout << ", " + author.country + ")";
 	}
 
 	return;
