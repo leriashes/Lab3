@@ -1,19 +1,20 @@
 #pragma once
+using namespace std;
 class Address
 {
 private:
-	char city[30];	//Название населённого пункта
-	char street[40];	//Название улицы
+	string city;	//Название населённого пункта
+	string street;	//Название улицы
 	int house;		//Номер дома
 	int flat;		//Номер квартиры
 
 public:
 	Address();		//Конструктор
-	Address(const char* city, const char* street, int house_number, int flat_number);	//Конструктор с параметром
+	Address(string city, string street, int house_number, int flat_number);	//Конструктор с параметром
 	~Address();		//Деструктор
 
-	void Init(const char* city, const char* street, int house_number, int flat_number);		//Инициализация всех полей
-	bool City(const char* city);	//Проверка совпадения города
+	void Init(string city, string street, int house_number, int flat_number);		//Инициализация всех полей
+	bool City(string city);	//Проверка совпадения города
 
 	friend class InOut;
 };

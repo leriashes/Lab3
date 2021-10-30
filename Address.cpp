@@ -6,23 +6,17 @@
 //Конструктор
 Address::Address()
 {
-	strcpy(this->city, "г. Москва");
-
-	strcpy(this->street, "Ленинский проспект");
-
+	this->city = "г. Москва";
+	this->street = "Ленинский проспект";
 	house = 1;
 	flat = 1;
 }
 
 //Конструктор с параметром
-Address::Address(const char* city, const char* street, int house_number, int flat_number)
+Address::Address(string city, string street, int house_number, int flat_number)
 {
-	strncpy(this->city, city, 30);
-	this->city[29] = '\0';
-
-	strncpy(this->street, street, 40);
-	this->street[39] = '\0';
-
+	this->city = city;
+	this->street = street;
 	house = house_number;
 	flat = flat_number;
 }
@@ -33,24 +27,20 @@ Address::~Address()
 }
 
 //Инициализация всех полей
-void Address::Init(const char* city, const char* street, int house_number, int flat_number)
+void Address::Init(string city, string street, int house_number, int flat_number)
 {
-	strncpy(this->city, city, 30);
-	this->city[29] = '\0';
-
-	strncpy(this->street, street, 40);
-	this->street[39] = '\0';
-
+	this->city = city;
+	this->street = street;
 	house = house_number;
 	flat = flat_number;
 }
 
 //Проверка совпадения города
-bool Address::City(const char* city)
+bool Address::City(string city)
 {
 	bool result = false;
 
-	if (strcmp(this->city, city) == 0)
+	if (this->city == city)
 		result = true;
 
 	return result;

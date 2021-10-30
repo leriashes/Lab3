@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <conio.h>
+#include <string>
 #include "InOut.h"
 #include "Book.h"
 
@@ -9,22 +10,26 @@ void InOut::Read(Address* address)
 	printf("Введите название населённого пункта (например: г. Барнаул): ");
 
 	char letter;
+
+	address->city.clear();
+
 	for (int i = 0; i < 30; i++)
 	{
 		letter = _getch();
 		if (letter == '\r')
 		{
-			address->city[i] = '\0';
+			address->city += '\0';
 			i = 30;
 		}
 		else if (letter == '\b' && i > 0)
 		{
+			address->city.pop_back();
 			i -= 2;
 			printf("\b \b");
 		}
 		else if (letter != '\b' && i < 29)
 		{
-			address->city[i] = letter;
+			address->city += letter;
 			printf("%c", letter);
 		}
 		else
@@ -32,56 +37,57 @@ void InOut::Read(Address* address)
 	}
 
 	printf("\nВведите название улицы (например: ул. Попова): ");
+	address->street.clear();
 	for (int i = 0; i < 40; i++)
 	{
 		letter = _getch();
 		if (letter == '\r')
 		{
-			address->street[i] = '\0';
+			address->street += '\0';
 			i = 40;
 		}
 		else if (letter == '\b' && i > 0)
 		{
+			address->street.pop_back();
 			i -= 2;
 			printf("\b \b");
 		}
 		else if (letter != '\b' && i < 39)
 		{
-			address->street[i] = letter;
+			address->street += letter;
 			printf("%c", letter);
 		}
 		else
 			i--;
 	}
 
-	char result[5];
+	string result;
 	printf("\nВведите номер дома: ");
 	for (int i = 0; i < 5; i++)
 	{
 		letter = _getch();
 		if (letter == '\r')
 		{
-			result[i] = '\0';
+			result += '\0';
 			i = 5;
 		}
 		else if (letter >= '0' && letter <= '9' && (i == 0 && letter != '0' || i > 0 && i < 4))
 		{
-			result[i] = letter;
+			result += letter;
 			printf("%c", letter);
 		}
 		else if (letter == '\b' && i > 0)
 		{
+			result.pop_back();
 			i -= 2;
 			printf("\b \b");
-
 		}
 		else
 			i--;
 	}
 
-	address->house = 0;
-	for (int i = 0; result[i] != '\0'; i++)
-		address->house = address->house * 10 + result[i] - 48;
+	address->house = stoi(result);
+	result.clear();
 
 	printf("\nВведите номер квартиры: ");
 	for (int i = 0; i < 5; i++)
@@ -89,27 +95,25 @@ void InOut::Read(Address* address)
 		letter = _getch();
 		if (letter == '\r')
 		{
-			result[i] = '\0';
+			result += '\0';
 			i = 5;
 		}
 		else if (letter >= '0' && letter <= '9' && (i == 0 && letter != '0' || i > 0 && i < 4))
 		{
-			result[i] = letter;
+			result += letter;
 			printf("%c", letter);
 		}
 		else if (letter == '\b' && i > 0)
 		{
+			result.pop_back();
 			i -= 2;
-			printf("\b \b");
-
+			printf("\b \b"); 
 		}
 		else
 			i--;
 	}
 
-	address->flat = 0;
-	for (int i = 0; result[i] != '\0'; i++)
-		address->flat = address->flat * 10 + result[i] - 48;
+	address->flat = stoi(result);
 
 	return;
 }
@@ -415,7 +419,8 @@ void InOut::Read(Reader* reader)
 
 void InOut::Display(Address address)
 {
-	printf("%s, %s %d, %d", address.city, address.street, address.house, address.flat);
+	cout << address.city + ", " + address.street;
+	printf(" %d, %d", address.house, address.flat);
 	return;
 }
 
