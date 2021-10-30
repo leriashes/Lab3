@@ -2,22 +2,20 @@
 #include <iostream>
 #include <conio.h>
 #include "Publishing.h"
+using namespace std;
 
 //Конструктор
 Publishing::Publishing()
 {
-	strcpy(name, "Издательство №1");
-	strcpy(city, "г. Москва");
+	name = "Издательство №1";
+	city = "г. Москва";
 }
 
 //Конструктор с параметром
-Publishing::Publishing(const char* name, const char* city)
+Publishing::Publishing(string name, string city)
 {
-	strncpy(this->name, name, 30);
-	this->name[29] = '\0';
-
-	strncpy(this->city, city, 30);
-	this->city[29] = '\0';
+	this->name = name;
+	this->city = city;
 }
 
 //Деструктор
@@ -25,23 +23,20 @@ Publishing::~Publishing()
 {
 }
 
-void Publishing::Init(const char* name, const char* city)
+void Publishing::Init(string name, string city)
 {
-	strncpy(this->name, name, 30);
-	this->name[29] = '\0';
-
-	strncpy(this->city, city, 30);
-	this->city[29] = '\0';
+	this->name = name;
+	this->city = city;
 
 	return;
 }
 
 //Проверка находится ли издательство в заданном городе
-bool Publishing::IsHere(const char* city)
+bool Publishing::IsHere(string city)
 {
 	bool result = false;
 
-	if (strcmp(this->city, city) == 0)
+	if (this->city == city)
 		result = true;
 
 	return result;

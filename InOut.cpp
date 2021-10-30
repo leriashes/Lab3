@@ -313,22 +313,24 @@ void InOut::Read(Publishing* publishing)
 	printf("¬ведите название издательства: ");
 
 	char letter;
-	for (int i = 0; i < 30; i++)
+	publishing->name.clear();
+	for (int i = 0; i < 50; i++)
 	{
 		letter = _getch();
 		if (letter == '\r')
 		{
-			publishing->name[i] = '\0';
-			i = 30;
+			publishing->name += '\0';
+			i = 50;
 		}
 		else if (letter == '\b' && i > 0)
 		{
+			publishing->name.pop_back();
 			i -= 2;
 			printf("\b \b");
 		}
-		else if (letter != '\b' && i < 29)
+		else if (letter != '\b' && i < 49)
 		{
-			publishing->name[i] = letter;
+			publishing->name += letter;
 			printf("%c", letter);
 		}
 		else
@@ -337,22 +339,24 @@ void InOut::Read(Publishing* publishing)
 
 	printf("\n¬ведите населЄнный пункт, в котором находитс€ издательство (например: г. Ѕарнаул): ");
 
-	for (int i = 0; i < 30; i++)
+	publishing->city.clear();
+	for (int i = 0; i < 50; i++)
 	{
 		letter = _getch();
 		if (letter == '\r')
 		{
-			publishing->city[i] = '\0';
-			i = 30;
+			publishing->city += '\0';
+			i = 50;
 		}
 		else if (letter == '\b' && i > 0)
 		{
+			publishing->city.pop_back();
 			i -= 2;
 			printf("\b \b");
 		}
-		else if (letter != '\b' && i < 29)
+		else if (letter != '\b' && i < 49)
 		{
-			publishing->city[i] = letter;
+			publishing->city += letter;
 			printf("%c", letter);
 		}
 		else
@@ -644,7 +648,7 @@ void InOut::Display(Date date, const char* format)
 
 void InOut::Display(Publishing publishing)
 {
-	printf("%s (%s)", publishing.name, publishing.city);
+	cout << publishing.name + " (" + publishing.city + ")";
 	return;
 }
 
