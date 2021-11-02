@@ -185,7 +185,7 @@ int main()
 
 
 	//Работа с объектами класса Author
-	/*printf("\n\n\n\nРабота со объектами класса Author\n");
+	printf("\n\n\n\nРабота со объектами класса Author\n");
 
 	//Статические переменные
 	Author author_st,	//Создание через конструктор без параметров
@@ -218,7 +218,7 @@ int main()
 	printf("\n");
 
 	//Ввод значений всех полей объекта
-	printf("\nВвод значений всех полей объекта\n");
+	printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
 
 	InOut::Read(&author_st);
 	printf("\nauthor_st = ");
@@ -228,6 +228,18 @@ int main()
 	InOut::Read(author_d);
 	printf("\n*author_d = ");
 	InOut::Display(*author_d, "all");
+
+	printf("\n\nВвод значений всех полей объекта (передача и возврат по ссылке)\n");
+
+	InOut::Read(author_st);
+	printf("\nauthor_st = ");
+	InOut::Display(author_st, "all");
+	printf("\n\n");
+
+	InOut::Read(*author_d);
+	printf("\n*author_d = ");
+	InOut::Display(*author_d, "all");
+
 
 	//Вывод значений полей в выбранном формате
 	printf("\n\nВывод значений полей в выбранном формате (помимо полного вывода)\nauthor_st (FullName) = ");
@@ -302,7 +314,7 @@ int main()
 	printf("\n");
 
 	//Ввод значений всех полей объекта
-	printf("\nВвод значений всех полей объекта\n");
+	printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
 
 	InOut::Read(&address_st);
 	printf("\naddress_st = ");
@@ -310,6 +322,17 @@ int main()
 	printf("\n\n");
 
 	InOut::Read(address_d);
+	printf("\n*address_d = ");
+	InOut::Display(*address_d);
+
+	printf("\n\nВвод значений всех полей объекта (передача и возврат по ссылке)\n");
+
+	InOut::Read(address_st);
+	printf("\naddress_st = ");
+	InOut::Display(address_st);
+	printf("\n\n");
+
+	InOut::Read(*address_d);
 	printf("\n*address_d = ");
 	InOut::Display(*address_d);
 
@@ -378,7 +401,7 @@ int main()
 	printf("\n");
 
 	//Ввод значений всех полей объекта
-	printf("\nВвод значений всех полей объекта\n");
+	printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
 
 	InOut::Read(&reader_st);
 	printf("\nreader_st = ");
@@ -386,6 +409,17 @@ int main()
 	printf("\n\n");
 
 	InOut::Read(reader_d);
+	printf("\n*reader_d = ");
+	InOut::Display(*reader_d, "all");
+
+	printf("\n\nВвод значений всех полей объекта (передача и возврат по ссылке)\n");
+
+	InOut::Read(reader_st);
+	printf("\nreader_st = ");
+	InOut::Display(reader_st, "all");
+	printf("\n\n");
+
+	InOut::Read(*reader_d);
 	printf("\n*reader_d = ");
 	InOut::Display(*reader_d, "all");
 
@@ -464,7 +498,7 @@ int main()
 	printf("\n");
 
 	//Ввод значений всех полей объекта
-	printf("\nВвод значений всех полей объекта\n");
+	printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
 
 	InOut::Read(&publishing_st);
 	printf("\npublishing_st = ");
@@ -472,6 +506,17 @@ int main()
 	printf("\n\n");
 
 	InOut::Read(publishing_d);
+	printf("\n*publishing_d = ");
+	InOut::Display(*publishing_d);
+
+	printf("\n\nВвод значений всех полей объекта (передача и возврат по ссылке)\n");
+
+	InOut::Read(publishing_st);
+	printf("\npublishing_st = ");
+	InOut::Display(publishing_st);
+	printf("\n\n");
+
+	InOut::Read(*publishing_d);
 	printf("\n*publishing_d = ");
 	InOut::Display(*publishing_d);
 
@@ -540,7 +585,7 @@ int main()
 	printf("\n");
 
 	//Ввод значений всех полей объекта
-	printf("\nВвод значений всех полей объекта\n");
+	printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
 
 	InOut::Read(&book_st);
 	printf("\n\nbook_st ");
@@ -548,6 +593,17 @@ int main()
 	printf("\n\n");
 
 	InOut::Read(book_d);
+	printf("\n\n*book_d ");
+	InOut::Display(*book_d);
+
+	printf("\n\nВвод значений всех полей объекта (передача и возврат по ссылке)\n");
+
+	InOut::Read(book_st);
+	printf("\n\nbook_st ");
+	InOut::Display(book_st);
+	printf("\n\n");
+
+	InOut::Read(*book_d);
 	printf("\n\n*book_d ");
 	InOut::Display(*book_d);
 
@@ -674,7 +730,7 @@ int main()
 
 	delete book_d;
 	delete book_d1;
-	delete book_d2;*/
+	delete book_d2;
 
 	return 0;
 }
