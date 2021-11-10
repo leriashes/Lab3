@@ -144,12 +144,12 @@ void Date::Init(int seconds, int minutes, int hours, int day, int month, int yea
 }
 
 //Текущая дата
-void Date::Now() 
+Date& Date::Now() 
 {
 	time_t seconds = time(NULL);
 	tm* timeinfo = localtime(&seconds);
 	Init(timeinfo->tm_sec, timeinfo->tm_min, timeinfo->tm_hour, timeinfo->tm_mday, timeinfo->tm_mon + 1, timeinfo->tm_year + 1900);
-	return;
+	return *this;
 }
 
 //Сравнение дат

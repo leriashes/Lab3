@@ -23,7 +23,7 @@ public:
 	void ReadDate();	//Ввод только даты
 
 	void Init(int seconds, int minutes, int hours, int day, int month, int year);	//Инициализация всех полей
-	void Now();		//Текущая дата
+	Date& Now();		//Текущая дата
 	Date Compare(Date end_date);		//Сравнение дат
 	Date Add(Date add_date);		//Прибавление времени к дате
 	bool IsAnniversary(Date second_date);	//Проверка является ли дата годовщиной другой

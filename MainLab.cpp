@@ -106,11 +106,9 @@ int main()
 
 	//Получение текущей даты и времени
 	printf("\n\nТекущая дата и время\ndate_st1 = ");
-	date_st1.Now();
-	InOut::Display(date_st1, "all");
+	InOut::Display(date_st1.Now(), "all");
 	printf("\n*date_d1 = ");
-	date_d1->Now();
-	InOut::Display(*date_d1, "all");
+	InOut::Display(date_d1->Now(), "all");
 
 	//Сравнение дат
 	printf("\n\n\nСравнение дат (сколько времени от первой даты до второй)\n");
