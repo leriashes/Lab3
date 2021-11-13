@@ -12,6 +12,7 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
+
 	//Работа с объектами класса Date
 	printf("Работа со объектами класса Date\n");
 
@@ -661,6 +662,8 @@ int main()
 	book_st1.AddReader(NULL);
 	InOut::Display(book_st1);
 
+	//Всего книг в библиотеке
+	printf("\n\nВсего в бибилиотеке %d книг", Book::GetCounter());
 	printf("\n\nНажмите любую клавишу для продолжения...");
 	_getch();
 	system("cls");
@@ -720,6 +723,7 @@ int main()
 	InOut::Display(*books_mas2[1]);
 	printf("\n\n");
 
+	printf("\n\nВсего в бибилиотеке %d книг", Book::GetCounter());
 
 	delete[] books_mas1;
 	

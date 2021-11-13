@@ -906,7 +906,8 @@ void InOut::Display(Author author, const char* format)
 
 void InOut::Display(Book book)
 {
-	cout << "Название: \"" + book.title + "\"";
+	printf("ID %d", book.id);
+	cout << "\nНазвание: \"" + book.title + "\"";
 	cout << "\nЖанр: " + book.genre;
 	printf("\nКоличество страниц: %d", book.pages_number);
 	printf("\nГод публикации: %d", book.publ_year);

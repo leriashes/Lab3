@@ -6,15 +6,21 @@
 class Book
 {
 private:
+	
+	static int counter;
+
 	string title;			//Название книги
-	Author author;		//Автор
+	Author author;			//Автор
 	int pages_number;		//Количество страниц
 	string genre;			//Жанр
 	Reader* reader = NULL;	//Читатель
 	Publishing publishing;	//Издательство
 	int publ_year;			//Год
+	int id;
 
 public:
+	static int GetCounter();
+
 	Book();		//Конструктор
 	Book(string title, Author author, int pages_number, string genre, Publishing publishing, int publication_year);		//Конструктор с параметром
 	Book(string title, Author author, int pages_number, string genre, Reader* reader, Publishing publishing, int publication_year);		//Конструктор с параметром
@@ -29,4 +35,3 @@ public:
 
 	friend class InOut;
 };
-

@@ -3,6 +3,13 @@
 #include <conio.h>
 #include "Book.h"
 
+int Book::counter = 0;
+
+int Book::GetCounter()
+{
+	return counter;
+}
+
 //Конструктор
 Book::Book()
 {
@@ -10,6 +17,8 @@ Book::Book()
 	pages_number = 50;
 	genre = "Сказки";
 	publ_year = 2021;
+	counter++;
+	id = counter;
 }
 
 //Конструктор с параметром
@@ -21,6 +30,8 @@ Book::Book(string title, Author author, int pages_number, string genre, Publishi
 	this->genre = genre;
 	this->publishing = publishing;
 	this->publ_year = abs(publication_year);
+	counter++;
+	id = counter;
 }
 
 //Конструктор с параметром
@@ -33,6 +44,8 @@ Book::Book(string title, Author author, int pages_number, string genre, Reader* 
 	this->reader = reader;
 	this->publishing = publishing;
 	this->publ_year = abs(publication_year);
+	counter++;
+	id = counter;
 }
 
 //Деструктор
