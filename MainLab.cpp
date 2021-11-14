@@ -662,7 +662,7 @@ int main()
 	InOut::Display(book_st1);
 
 	//Всего книг в библиотеке
-	printf("\n\nВсего в бибилиотеке %d книг", Book::GetCounter());
+	printf("\n\nКниг в бибилиотеке: %d ", Book::GetCounter());
 	printf("\n\nНажмите любую клавишу для продолжения...");
 	_getch();
 	system("cls");
@@ -722,7 +722,7 @@ int main()
 	InOut::Display(*books_mas2[1]);
 	printf("\n\n");
 
-	printf("\n\nВсего в бибилиотеке %d книг", Book::GetCounter());
+	printf("\n\nКниг в бибилиотеке: %d", Book::GetCounter());
 	printf("\n\nНажмите любую клавишу для продолжения...");
 	_getch();
 	system("cls");
