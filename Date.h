@@ -10,6 +10,8 @@ private:
 	int year;	//Год
 
 public:
+	static Date Today();
+
 	Date();		//Конструктор
 	Date(int day, int month, int year);		//Конструктор с параметром (только дата)
 	Date(int seconds, int minutes, int hours, int day, int month, int year);	//Конструктор с параметром (дата и время)

@@ -11,8 +11,7 @@ int main()
 	setlocale(LC_ALL, "Rus");
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-
-
+	 
 	//Работа с объектами класса Date
 	printf("Работа со объектами класса Date\n");
 
@@ -724,7 +723,27 @@ int main()
 	printf("\n\n");
 
 	printf("\n\nВсего в бибилиотеке %d книг", Book::GetCounter());
+	printf("\n\nНажмите любую клавишу для продолжения...");
+	_getch();
+	system("cls");
 
+	Book kniga;
+	printf("Книг в библиотеке:%d \nВремя, на которое можно брать книги: %d", Book::GetCounter(), Book::GetTime());
+	Book::SetTime(14);
+	Book knigi[3];
+	printf("\n\nКниг в библиотеке:%d \nВремя, на которое можно брать книги: %d\n", Book::GetCounter(), Book::GetTime());
+
+	Book::BorrowBook(kniga, reader_st, Date::Today());
+	InOut::Display(kniga);
+	printf("\n\nКоличество выданных книг читателю reader_st2: %d\n\n", Book::BorrowBook(knigi, 2, reader_st2, Date::Today()));
+	printf("\n\nКоличество выданных книг читателю reader_st1: %d\n\n", Book::BorrowBook(knigi, 3, reader_st1, Date::Today()));
+
+	for (int i = 0; i < 3; i++)
+	{
+		printf("\n\n");
+		InOut::Display(knigi[i]);
+	}
+	
 	delete[] books_mas1;
 	
 	for (int i = 0; i < 2; i++)

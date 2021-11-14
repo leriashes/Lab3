@@ -7,7 +7,8 @@ class Book
 {
 private:
 	
-	static int counter;
+	static int counter;		//Счётчик книг
+	static int time;		//Время, на которое можно брать книги
 
 	string title;			//Название книги
 	Author author;			//Автор
@@ -16,10 +17,15 @@ private:
 	Reader* reader = NULL;	//Читатель
 	Publishing publishing;	//Издательство
 	int publ_year;			//Год
-	int id;
+	int id;					//ID книги
+	Date borrow_date;		//Дата взятия книги
 
 public:
 	static int GetCounter();
+	static int GetTime();
+	static void SetTime(int days);
+	static bool BorrowBook(Book& book, Reader& reader, Date date);
+	static int BorrowBook(Book* book, int num, Reader& reader, Date date);
 
 	Book();		//Конструктор
 	Book(string title, Author author, int pages_number, string genre, Publishing publishing, int publication_year);		//Конструктор с параметром

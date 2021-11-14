@@ -4,6 +4,13 @@
 #include <ctime>
 #include "Date.h"
 
+Date Date::Today()
+{
+	Date today;
+	today.Now();
+    return today;
+}
+
 //Конструктор
 Date::Date()
 {

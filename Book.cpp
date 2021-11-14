@@ -4,10 +4,54 @@
 #include "Book.h"
 
 int Book::counter = 0;
+int Book::time = 30;
 
 int Book::GetCounter()
 {
 	return counter;
+}
+
+int Book::GetTime()
+{
+	return time;
+} 
+
+void Book::SetTime(int days)
+{
+	if (days >= 1)
+	{
+		time = days;
+	}
+
+	return;
+}
+
+bool Book::BorrowBook(Book& book, Reader& reader, Date date)
+{
+	bool result = false;
+
+	if (book.InLib())
+	{
+		book.AddReader(&reader);
+		book.borrow_date = date;
+		result = true;
+	}
+
+	return result;
+}
+
+int Book::BorrowBook(Book* book, int num, Reader& reader, Date date)
+{
+	int result = 0;
+
+	for (int i = 0; i < num; i++)
+	{
+		if (BorrowBook(*(book + i), reader, date))
+		{
+			result += 1;
+		}
+	}
+	return result;
 }
 
 //Конструктор

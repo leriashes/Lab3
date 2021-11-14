@@ -918,6 +918,11 @@ void InOut::Display(Book book)
 	if (book.reader != NULL) {
 		printf("\nЧитатель: ");
 		Display(*book.reader, "[DocNumber] FullName");
+		printf("\nДата взятия книги: ");
+		Display(book.borrow_date, "DD.MM.YYYY");
+		printf("\nСрок сдачи книги: ");
+		Date plus(Book::time, 0, 0);
+		Display(book.borrow_date + plus, "DD.MM.YYYY");
 	}
 
 	return;
