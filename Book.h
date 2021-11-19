@@ -34,6 +34,8 @@ public:
 	Book(const Book& source);	//Конструктор копирования
 	~Book();	//Деструктор
 
+	Book& operator=(const Book& source);
+
 	void Init(string title, Author author, int pages_number, string genre, Publishing publishing, int publication_year);		//Инициализация всех полей
 	void Init(string title, Author author, int pages_number, string genre, Reader* reader, Publishing publishing, int publication_year);		//Инициализация всех полей
 	void AddReader(Reader* reader);		//Привязка читателя

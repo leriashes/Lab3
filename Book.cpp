@@ -115,6 +115,7 @@ Book::Book(const Book& source)
 	{
 		reader = new Reader;
 		*reader = *source.reader;
+		borrow_date = source.borrow_date;
 	}
 	
 	publishing = source.publishing;
@@ -125,6 +126,35 @@ Book::Book(const Book& source)
 //Деструктор
 Book::~Book()
 {
+}
+
+Book& Book::operator=(const Book& source)
+{
+	if (this != &source)
+	{
+		/*if (reader != NULL)
+			delete reader;*/
+
+		//reader = NULL;
+		title = source.title;
+		author = source.author;
+		pages_number = source.pages_number;
+		genre = source.genre;
+
+		if (source.reader != NULL)
+		{
+			//reader = new Reader;
+			//*reader = *source.reader;
+			reader = source.reader;
+			borrow_date = source.borrow_date;
+		}
+
+		publishing = source.publishing;
+		publ_year = source.publ_year;
+		id = source.id;
+	}
+
+	return *this;
 }
 
 //Инициализация всех полей
