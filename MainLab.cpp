@@ -6,23 +6,23 @@
 #include "Book.h"
 #include "InOut.h"
 
-int main() 
+int main()
 {
 	setlocale(LC_ALL, "Rus");
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	 
+
 	//Работа с объектами класса Date
 	printf("Работа со объектами класса Date\n");
 
 	//Статические переменные
 	Date date_st,	//Создание через конструктор без параметров
 		//Создание через конструкторы с параметрами
-		date_st1(12, 02, 2004), 
+		date_st1(12, 02, 2004),
 		date_st2(26, 35, 12, 13, 05, 1997);
 
 	//Динамические переменные
-	Date* date_d, *date_d1, *date_d2;
+	Date* date_d, * date_d1, * date_d2;
 	date_d = new Date();	//Создание через конструктор без параметров
 	//Создание через конструкторы с параметрами
 	date_d1 = new Date(31, 8, 1998);
@@ -285,7 +285,7 @@ int main()
 	delete author_d2;
 
 
-	
+
 	//Работа с объектами класса Address
 	printf("\n\n\n\nРабота со объектами класса Address\n");
 
@@ -619,7 +619,7 @@ int main()
 	printf("\n\nПривязка читателя\nbook_st1 ");
 	book_st1.AddReader(&reader_st);
 	InOut::Display(book_st1);
-	
+
 	//Сравнение читателей книг
 	printf("\n\nСравнение читателей книг\n");
 	InOut::Display(book_st2);
@@ -668,7 +668,7 @@ int main()
 	system("cls");
 
 	//Работа с динамическим массивом объектов класса и с массивом динамических объектов класса
-	Book *books_mas1, *books_mas2[2];
+	Book* books_mas1, * books_mas2[2];
 
 	books_mas1 = new Book[2];
 
@@ -730,7 +730,7 @@ int main()
 	Book kniga;
 	printf("Книг в библиотеке:%d \nВремя, на которое можно брать книги: %d", Book::GetCounter(), Book::GetTime());
 	Book::SetTime(14);
-	Book knigi[3];
+	Book knigi[3] = {Book("Книга 1"), Book("Книга 2"), Book("Книга 3")};
 	printf("\n\nКниг в библиотеке:%d \nВремя, на которое можно брать книги: %d\n", Book::GetCounter(), Book::GetTime());
 
 	Book::BorrowBook(kniga, reader_st, Date::Today());
@@ -743,15 +743,16 @@ int main()
 		printf("\n\n");
 		InOut::Display(knigi[i]);
 	}
-	
+
 	delete[] books_mas1;
-	
+
 	for (int i = 0; i < 2; i++)
 		delete books_mas2[i];
 
 	delete book_d;
 	delete book_d1;
 	delete book_d2;
+
 
 	return 0;
 }
