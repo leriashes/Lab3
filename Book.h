@@ -31,6 +31,7 @@ public:
 	Book(string title);		//Конструктор с одним параметром
 	Book(string title, Author author, int pages_number, string genre, Publishing publishing, int publication_year);		//Конструктор с параметром
 	Book(string title, Author author, int pages_number, string genre, Reader* reader, Publishing publishing, int publication_year);		//Конструктор с параметром
+	Book(const Book& source);	//Конструктор копирования
 	~Book();	//Деструктор
 
 	void Init(string title, Author author, int pages_number, string genre, Publishing publishing, int publication_year);		//Инициализация всех полей

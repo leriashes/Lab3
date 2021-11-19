@@ -103,6 +103,25 @@ Book::Book(string title, Author author, int pages_number, string genre, Reader* 
 	id = counter;
 }
 
+//Конструктор копирования
+Book::Book(const Book& source)
+{
+	title = source.title;
+	author = source.author;
+	pages_number = source.pages_number;
+	genre = source.genre;
+
+	if (source.reader != NULL)
+	{
+		reader = new Reader;
+		*reader = *source.reader;
+	}
+	
+	publishing = source.publishing;
+	publ_year = source.publ_year;
+	id = source.id;
+}
+
 //Деструктор
 Book::~Book()
 {

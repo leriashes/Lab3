@@ -46,7 +46,7 @@ int main()
 	printf("\n");
 
 	//Ввод только времени
-	printf("\nВвод только времени\n");
+	/*printf("\nВвод только времени\n");
 
 	date_st.ReadTime();
 	printf("\ndate_st = ");
@@ -67,7 +67,7 @@ int main()
 
 	date_d->ReadDate();
 	printf("\n*date_d = ");
-	InOut::Display(*date_d, "all");
+	InOut::Display(*date_d, "all");*/
 
 	//Вывод значений полей в выбранном формате
 	printf("\n\nВывод значений полей в выбранном формате (помимо полного вывода)\ndate_st (hh:mm:ss) = ");
@@ -216,7 +216,7 @@ int main()
 	printf("\n");
 
 	//Ввод значений всех полей объекта
-	printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
+	/*printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
 
 	InOut::Read(&author_st);
 	printf("\nauthor_st = ");
@@ -236,7 +236,7 @@ int main()
 
 	InOut::Read(*author_d);
 	printf("\n*author_d = ");
-	InOut::Display(*author_d, "all");
+	InOut::Display(*author_d, "all");*/
 
 
 	//Вывод значений полей в выбранном формате
@@ -312,7 +312,7 @@ int main()
 	printf("\n");
 
 	//Ввод значений всех полей объекта
-	printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
+	/*printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
 
 	InOut::Read(&address_st);
 	printf("\naddress_st = ");
@@ -332,7 +332,7 @@ int main()
 
 	InOut::Read(*address_d);
 	printf("\n*address_d = ");
-	InOut::Display(*address_d);
+	InOut::Display(*address_d);*/
 
 	//Инициализация значений
 	printf("\n\nИнициализация значений");
@@ -399,7 +399,7 @@ int main()
 	printf("\n");
 
 	//Ввод значений всех полей объекта
-	printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
+	/*printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
 
 	InOut::Read(&reader_st);
 	printf("\nreader_st = ");
@@ -419,7 +419,7 @@ int main()
 
 	InOut::Read(*reader_d);
 	printf("\n*reader_d = ");
-	InOut::Display(*reader_d, "all");
+	InOut::Display(*reader_d, "all");*/
 
 	//Вывод значений полей в выбранном формате
 	printf("\n\nВывод значений полей в выбранном формате (помимо полного вывода)\nreader_st (FullName) = ");
@@ -496,7 +496,7 @@ int main()
 	printf("\n");
 
 	//Ввод значений всех полей объекта
-	printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
+	/*printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
 
 	InOut::Read(&publishing_st);
 	printf("\npublishing_st = ");
@@ -516,7 +516,7 @@ int main()
 
 	InOut::Read(*publishing_d);
 	printf("\n*publishing_d = ");
-	InOut::Display(*publishing_d);
+	InOut::Display(*publishing_d);*/
 
 	//Инициализация значений
 	printf("\n\nИнициализация значений");
@@ -583,7 +583,7 @@ int main()
 	printf("\n");
 
 	//Ввод значений всех полей объекта
-	printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
+	/*printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
 
 	InOut::Read(&book_st);
 	printf("\n\nbook_st ");
@@ -603,7 +603,7 @@ int main()
 
 	InOut::Read(*book_d);
 	printf("\n\n*book_d ");
-	InOut::Display(*book_d);
+	InOut::Display(*book_d);*/
 
 	//Инициализация значений
 	printf("\n\nИнициализация значений");
@@ -637,6 +637,10 @@ int main()
 		printf("\n\nодин и тот же читатель.\n");
 	else
 		printf("\n\nразные читатели.\n");
+
+	Book booki(book_st1);
+
+	book_st1 = *book_d1;
 
 	//Проверка принадлежности книги читателю
 	printf("\n\nПроверка принадлежности книги читателю\n");
@@ -730,7 +734,7 @@ int main()
 	Book kniga;
 	printf("Книг в библиотеке:%d \nВремя, на которое можно брать книги: %d", Book::GetCounter(), Book::GetTime());
 	Book::SetTime(14);
-	Book knigi[3] = {Book("Книга 1"), Book("Книга 2"), Book("Книга 3")};
+	Book knigi[3] = { Book("Книга 1"), Book("Книга 2"), Book("Книга 3") };
 	printf("\n\nКниг в библиотеке:%d \nВремя, на которое можно брать книги: %d\n", Book::GetCounter(), Book::GetTime());
 
 	Book::BorrowBook(kniga, reader_st, Date::Today());
