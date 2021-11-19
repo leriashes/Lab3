@@ -65,6 +65,17 @@ Book::Book()
 	id = counter;
 }
 
+//Конструктор с 1 параметром
+Book::Book(string title)
+{
+	this->title = title;
+	pages_number = 50;
+	genre = "Сказки";
+	publ_year = 2021;
+	counter++;
+	id = counter;
+}
+
 //Конструктор с параметром
 Book::Book(string title, Author author, int pages_number, string genre, Publishing publishing, int publication_year)
 {

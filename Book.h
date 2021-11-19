@@ -28,6 +28,7 @@ public:
 	static int BorrowBook(Book* book, int num, Reader& reader, Date date);
 
 	Book();		//Конструктор
+	Book(string title);		//Конструктор с одним параметром
 	Book(string title, Author author, int pages_number, string genre, Publishing publishing, int publication_year);		//Конструктор с параметром
 	Book(string title, Author author, int pages_number, string genre, Reader* reader, Publishing publishing, int publication_year);		//Конструктор с параметром
 	~Book();	//Деструктор
