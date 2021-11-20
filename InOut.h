@@ -23,5 +23,8 @@ public:
 	static void Display(Date date, const char* format);		//Печать объекта класса Date
 	static void Display(Publishing publishing);		//Печать объекта класса Publishing
 	static void Display(Reader reader, const char* format);		//Печать объекта класса Reader
+
+private:
+	static int InpStr(string& str, int max_len);	//Ввод строки
 };
 

@@ -8,64 +8,18 @@
 void InOut::Read(Address* address)
 {
 	printf("Введите название населённого пункта (например: г. Барнаул): ");
-
-	char letter;
-	address->city.clear();
-
-	for (int i = 0; i < 50; i++)
-	{
-		letter = _getch();
-		if (letter == '\r')
-		{
-			address->city += '\0';
-			i = 50;
-		}
-		else if (letter == '\b' && i > 0)
-		{
-			address->city.pop_back();
-			i -= 2;
-			printf("\b \b");
-		}
-		else if (letter != '\b' && i < 49)
-		{
-			address->city += letter;
-			printf("%c", letter);
-		}
-		else
-			i--;
-	}
+	while (InpStr(address->city, 50));
 
 	printf("\nВведите название улицы (например: ул. Попова): ");
-	address->street.clear();
-	for (int i = 0; i < 50; i++)
-	{
-		letter = _getch();
-		if (letter == '\r')
-		{
-			address->street += '\0';
-			i = 50;
-		}
-		else if (letter == '\b' && i > 0)
-		{
-			address->street.pop_back();
-			i -= 2;
-			printf("\b \b");
-		}
-		else if (letter != '\b' && i < 49)
-		{
-			address->street += letter;
-			printf("%c", letter);
-		}
-		else
-			i--;
-	}
+	while (InpStr(address->street, 50));
 
+	char letter;
 	string result;
 	printf("\nВведите номер дома: ");
 	for (int i = 0; i < 5; i++)
 	{
 		letter = _getch();
-		if (letter == '\r')
+		if (letter == '\r' && i > 0)
 		{
 			result += '\0';
 			i = 5;
@@ -92,7 +46,7 @@ void InOut::Read(Address* address)
 	for (int i = 0; i < 5; i++)
 	{
 		letter = _getch();
-		if (letter == '\r')
+		if (letter == '\r' && i > 0)
 		{
 			result += '\0';
 			i = 5;
@@ -120,60 +74,13 @@ void InOut::Read(Address* address)
 void InOut::Read(Author* author)
 {
 	printf("Введите ФИО автора: ");
-
-	char letter;
-	author->full_name.clear();
-
-	for (int i = 0; i < 50; i++)
-	{
-		letter = _getch();
-		if (letter == '\r')
-		{
-			author->full_name += '\0';
-			i = 50;
-		}
-		else if (letter == '\b' && i > 0)
-		{
-			author->full_name.pop_back();
-			i -= 2;
-			printf("\b \b");
-		}
-		else if (letter != '\b' && i < 49)
-		{
-			author->full_name += letter;
-			printf("%c", letter);
-		}
-		else
-			i--;
-	}
+	while (InpStr(author->full_name, 50));
 
 	printf("\nДата рождения\n");
 	author->birth.ReadDate();
 
 	printf("\nВведите страну происхождения автора: ");
-	author->country.clear();
-	for (int i = 0; i < 50; i++)
-	{
-		letter = _getch();
-		if (letter == '\r')
-		{
-			author->country += '\0';
-			i = 50;
-		}
-		else if (letter == '\b' && i > 0)
-		{
-			author->country.pop_back();
-			i -= 2;
-			printf("\b \b");
-		}
-		else if (letter != '\b' && i < 49)
-		{
-			author->country += letter;
-			printf("%c", letter);
-		}
-		else
-			i--;
-	}
+	while (InpStr(author->country, 50)); 
 
 	return;
 }
@@ -181,43 +88,18 @@ void InOut::Read(Author* author)
 void InOut::Read(Book* book)
 {
 	printf("Введите название книги: ");
-
-	char letter;
-	book->title.clear();
-	for (int i = 0; i < 50; i++)
-	{
-		letter = _getch();
-		if (letter == '\r')
-		{
-			book->title += '\0';
-			i = 50;
-		}
-		else if (letter == '\b' && i > 0)
-		{
-			book->title.pop_back();
-			i -= 2;
-			printf("\b \b");
-		}
-		else if (letter != '\b' && i < 49)
-		{
-			book->title += letter;
-			printf("%c", letter);
-		}
-		else
-			i--;
-	}
-
+	while (InpStr(book->title, 50));
 
 	printf("\n");
-	Read(&book->author);
-
+	Read(book->author);
 
 	printf("\nВведите количество страниц в книге: ");
+	char letter;
 	string result;
 	for (int i = 0; i < 5; i++)
 	{
 		letter = _getch();
-		if (letter == '\r')
+		if (letter == '\r' && i > 0)
 		{
 			result += '\0';
 			i = 5;
@@ -242,40 +124,17 @@ void InOut::Read(Book* book)
 
 
 	printf("\nВведите жанр: ");
-	book->genre.clear();
-	for (int i = 0; i < 30; i++)
-	{
-		letter = _getch();
-		if (letter == '\r')
-		{
-			book->genre += '\0';
-			i = 30;
-		}
-		else if (letter == '\b' && i > 0)
-		{
-			book->genre.pop_back();
-			i -= 2;
-			printf("\b \b");
-		}
-		else if (letter != '\b' && i < 29)
-		{
-			book->genre += letter;
-			printf("%c", letter);
-		}
-		else
-			i--;
-	}
+	while (InpStr(book->genre, 30));
 
 	printf("\n");
-	Read(&book->publishing);
-
+	Read(book->publishing);
 
 	printf("\nВведите год издания книги: ");
 	result.clear();
 	for (int i = 0; i < 5; i++)
 	{
 		letter = _getch();
-		if (letter == '\r')
+		if (letter == '\r' && i > 0)
 		{
 			result += '\0';
 			i = 5;
@@ -312,57 +171,10 @@ void InOut::Read(Date* date)
 void InOut::Read(Publishing* publishing)
 {
 	printf("Введите название издательства: ");
-
-	char letter;
-	publishing->name.clear();
-	for (int i = 0; i < 50; i++)
-	{
-		letter = _getch();
-		if (letter == '\r')
-		{
-			publishing->name += '\0';
-			i = 50;
-		}
-		else if (letter == '\b' && i > 0)
-		{
-			publishing->name.pop_back();
-			i -= 2;
-			printf("\b \b");
-		}
-		else if (letter != '\b' && i < 49)
-		{
-			publishing->name += letter;
-			printf("%c", letter);
-		}
-		else
-			i--;
-	}
+	while (InpStr(publishing->name, 50));
 
 	printf("\nВведите населённый пункт, в котором находится издательство (например: г. Барнаул): ");
-
-	publishing->city.clear();
-	for (int i = 0; i < 50; i++)
-	{
-		letter = _getch();
-		if (letter == '\r')
-		{
-			publishing->city += '\0';
-			i = 50;
-		}
-		else if (letter == '\b' && i > 0)
-		{
-			publishing->city.pop_back();
-			i -= 2;
-			printf("\b \b");
-		}
-		else if (letter != '\b' && i < 49)
-		{
-			publishing->city += letter;
-			printf("%c", letter);
-		}
-		else
-			i--;
-	}
+	while (InpStr(publishing->city, 50));
 
 	return;
 }
@@ -370,62 +182,16 @@ void InOut::Read(Publishing* publishing)
 void InOut::Read(Reader* reader)
 {
 	printf("Введите ФИО читателя: ");
-
-	char letter;
-	reader->full_name.clear();
-	for (int i = 0; i < 50; i++)
-	{
-		letter = _getch();
-		if (letter == '\r')
-		{
-			reader->full_name += '\0';
-			i = 50;
-		}
-		else if (letter == '\b' && i > 0)
-		{
-			reader->full_name.pop_back();
-			i -= 2;
-			printf("\b \b");
-		}
-		else if (letter != '\b' && i < 49)
-		{
-			reader->full_name += letter;
-			printf("%c", letter);
-		}
-		else
-			i--;
-	}
+	while (InpStr(reader->full_name, 50));
 
 	printf("\nДата рождения\n");
 	reader->birth.ReadDate();
 
 	printf("\nАдрес проживания\n");
-	Read(&reader->address);
+	Read(reader->address);
 
 	printf("\nВведите номер документа, удостовряющего личность: ");
-	reader->doc_number.clear();
-	for (int i = 0; i < 26; i++)
-	{
-		letter = _getch();
-		if (letter == '\r')
-		{
-			reader->doc_number += '\0';
-			i = 26;
-		}
-		else if (letter == '\b' && i > 0)
-		{
-			reader->doc_number.pop_back();
-			i -= 2;
-			printf("\b \b");
-		}
-		else if (letter != '\b' && i < 25)
-		{
-			reader->doc_number += letter;
-			printf("%c", letter);
-		}
-		else
-			i--;
-	}
+	while (InpStr(reader->doc_number, 26));
 
 	return;
 }
@@ -435,64 +201,18 @@ void InOut::Read(Reader* reader)
 void InOut::Read(Address& address)
 {
 	printf("Введите название населённого пункта (например: г. Барнаул): ");
-
-	char letter;
-	address.city.clear();
-
-	for (int i = 0; i < 50; i++)
-	{
-		letter = _getch();
-		if (letter == '\r')
-		{
-			address.city += '\0';
-			i = 50;
-		}
-		else if (letter == '\b' && i > 0)
-		{
-			address.city.pop_back();
-			i -= 2;
-			printf("\b \b");
-		}
-		else if (letter != '\b' && i < 49)
-		{
-			address.city += letter;
-			printf("%c", letter);
-		}
-		else
-			i--;
-	}
+	while (InpStr(address.city, 50));
 
 	printf("\nВведите название улицы (например: ул. Попова): ");
-	address.street.clear();
-	for (int i = 0; i < 50; i++)
-	{
-		letter = _getch();
-		if (letter == '\r')
-		{
-			address.street += '\0';
-			i = 50;
-		}
-		else if (letter == '\b' && i > 0)
-		{
-			address.street.pop_back();
-			i -= 2;
-			printf("\b \b");
-		}
-		else if (letter != '\b' && i < 49)
-		{
-			address.street += letter;
-			printf("%c", letter);
-		}
-		else
-			i--;
-	}
+	while (InpStr(address.street, 50));
 
+	char letter;
 	string result;
 	printf("\nВведите номер дома: ");
 	for (int i = 0; i < 5; i++)
 	{
 		letter = _getch();
-		if (letter == '\r')
+		if (letter == '\r' && i > 0)
 		{
 			result += '\0';
 			i = 5;
@@ -519,7 +239,7 @@ void InOut::Read(Address& address)
 	for (int i = 0; i < 5; i++)
 	{
 		letter = _getch();
-		if (letter == '\r')
+		if (letter == '\r' && i > 0)
 		{
 			result += '\0';
 			i = 5;
@@ -547,60 +267,13 @@ void InOut::Read(Address& address)
 void InOut::Read(Author& author)
 {
 	printf("Введите ФИО автора: ");
-
-	char letter;
-	author.full_name.clear();
-
-	for (int i = 0; i < 50; i++)
-	{
-		letter = _getch();
-		if (letter == '\r')
-		{
-			author.full_name += '\0';
-			i = 50;
-		}
-		else if (letter == '\b' && i > 0)
-		{
-			author.full_name.pop_back();
-			i -= 2;
-			printf("\b \b");
-		}
-		else if (letter != '\b' && i < 49)
-		{
-			author.full_name += letter;
-			printf("%c", letter);
-		}
-		else
-			i--;
-	}
+	while (InpStr(author.full_name, 50));
 
 	printf("\nДата рождения\n");
 	author.birth.ReadDate();
 
 	printf("\nВведите страну происхождения автора: ");
-	author.country.clear();
-	for (int i = 0; i < 50; i++)
-	{
-		letter = _getch();
-		if (letter == '\r')
-		{
-			author.country += '\0';
-			i = 50;
-		}
-		else if (letter == '\b' && i > 0)
-		{
-			author.country.pop_back();
-			i -= 2;
-			printf("\b \b");
-		}
-		else if (letter != '\b' && i < 49)
-		{
-			author.country += letter;
-			printf("%c", letter);
-		}
-		else
-			i--;
-	}
+	while (InpStr(author.country, 50));
 
 	return;
 }
@@ -608,43 +281,18 @@ void InOut::Read(Author& author)
 void InOut::Read(Book& book)
 {
 	printf("Введите название книги: ");
-
-	char letter;
-	book.title.clear();
-	for (int i = 0; i < 50; i++)
-	{
-		letter = _getch();
-		if (letter == '\r')
-		{
-			book.title += '\0';
-			i = 50;
-		}
-		else if (letter == '\b' && i > 0)
-		{
-			book.title.pop_back();
-			i -= 2;
-			printf("\b \b");
-		}
-		else if (letter != '\b' && i < 49)
-		{
-			book.title += letter;
-			printf("%c", letter);
-		}
-		else
-			i--;
-	}
-
+	while (InpStr(book.title, 50));
 
 	printf("\n");
 	Read(book.author);
 
-
 	printf("\nВведите количество страниц в книге: ");
+	char letter;
 	string result;
 	for (int i = 0; i < 5; i++)
 	{
 		letter = _getch();
-		if (letter == '\r')
+		if (letter == '\r' && i > 0)
 		{
 			result += '\0';
 			i = 5;
@@ -669,29 +317,7 @@ void InOut::Read(Book& book)
 
 
 	printf("\nВведите жанр: ");
-	book.genre.clear();
-	for (int i = 0; i < 30; i++)
-	{
-		letter = _getch();
-		if (letter == '\r')
-		{
-			book.genre += '\0';
-			i = 30;
-		}
-		else if (letter == '\b' && i > 0)
-		{
-			book.genre.pop_back();
-			i -= 2;
-			printf("\b \b");
-		}
-		else if (letter != '\b' && i < 29)
-		{
-			book.genre += letter;
-			printf("%c", letter);
-		}
-		else
-			i--;
-	}
+	while (InpStr(book.genre, 30));
 
 	printf("\n");
 	Read(book.publishing);
@@ -702,7 +328,7 @@ void InOut::Read(Book& book)
 	for (int i = 0; i < 5; i++)
 	{
 		letter = _getch();
-		if (letter == '\r')
+		if (letter == '\r' && i > 0)
 		{
 			result += '\0';
 			i = 5;
@@ -739,57 +365,10 @@ void InOut::Read(Date& date)
 void InOut::Read(Publishing& publishing)
 {
 	printf("Введите название издательства: ");
-
-	char letter;
-	publishing.name.clear();
-	for (int i = 0; i < 50; i++)
-	{
-		letter = _getch();
-		if (letter == '\r')
-		{
-			publishing.name += '\0';
-			i = 50;
-		}
-		else if (letter == '\b' && i > 0)
-		{
-			publishing.name.pop_back();
-			i -= 2;
-			printf("\b \b");
-		}
-		else if (letter != '\b' && i < 49)
-		{
-			publishing.name += letter;
-			printf("%c", letter);
-		}
-		else
-			i--;
-	}
+	while (InpStr(publishing.name, 50));
 
 	printf("\nВведите населённый пункт, в котором находится издательство (например: г. Барнаул): ");
-
-	publishing.city.clear();
-	for (int i = 0; i < 50; i++)
-	{
-		letter = _getch();
-		if (letter == '\r')
-		{
-			publishing.city += '\0';
-			i = 50;
-		}
-		else if (letter == '\b' && i > 0)
-		{
-			publishing.city.pop_back();
-			i -= 2;
-			printf("\b \b");
-		}
-		else if (letter != '\b' && i < 49)
-		{
-			publishing.city += letter;
-			printf("%c", letter);
-		}
-		else
-			i--;
-	}
+	while (InpStr(publishing.city, 50));
 
 	return;
 }
@@ -797,31 +376,7 @@ void InOut::Read(Publishing& publishing)
 void InOut::Read(Reader& reader)
 {
 	printf("Введите ФИО читателя: ");
-
-	char letter;
-	reader.full_name.clear();
-	for (int i = 0; i < 50; i++)
-	{
-		letter = _getch();
-		if (letter == '\r')
-		{
-			reader.full_name += '\0';
-			i = 50;
-		}
-		else if (letter == '\b' && i > 0)
-		{
-			reader.full_name.pop_back();
-			i -= 2;
-			printf("\b \b");
-		}
-		else if (letter != '\b' && i < 49)
-		{
-			reader.full_name += letter;
-			printf("%c", letter);
-		}
-		else
-			i--;
-	}
+	while (InpStr(reader.full_name, 50));
 
 	printf("\nДата рождения\n");
 	reader.birth.ReadDate();
@@ -830,29 +385,7 @@ void InOut::Read(Reader& reader)
 	Read(reader.address);
 
 	printf("\nВведите номер документа, удостовряющего личность: ");
-	reader.doc_number.clear();
-	for (int i = 0; i < 26; i++)
-	{
-		letter = _getch();
-		if (letter == '\r')
-		{
-			reader.doc_number += '\0';
-			i = 26;
-		}
-		else if (letter == '\b' && i > 0)
-		{
-			reader.doc_number.pop_back();
-			i -= 2;
-			printf("\b \b");
-		}
-		else if (letter != '\b' && i < 25)
-		{
-			reader.doc_number += letter;
-			printf("%c", letter);
-		}
-		else
-			i--;
-	}
+	while (InpStr(reader.doc_number, 26));
 
 	return;
 }
@@ -1130,5 +663,62 @@ void InOut::Display(Reader reader, const char* format)
 	}
 
 	return;
+}
+
+
+int InOut::InpStr(string& str, int max_len)
+{
+	int result = 0;
+	char letter;
+	str.clear();
+
+	for (int i = 0; i < max_len; i++)
+	{
+		letter = _getch();
+		if (letter == '\r' && i > 0)
+		{
+			str += '\0';
+			i = 50;
+		}
+		else if (letter == '\b' && i > 0)
+		{
+			str.pop_back();
+			i -= 2;
+			printf("\b \b");
+		}
+		else if (letter != '\r' && letter != '\b' && i < max_len - 1)
+		{
+			str += letter;
+			printf("%c", letter);
+		}
+		else
+			i--;
+	}
+
+	try
+	{
+		for (int i = 0; i < str.size() - 1; i++)
+		{
+			if (str.compare(i, 1, " ") == 0)
+			{
+				if (i == 0 || i < str.size() - 2 && str.compare(i + 1, 1, " ") == 0 || i == str.size() - 2)
+				{
+					str.erase(i, 1); 
+					i--;
+				}
+			}
+		}
+
+		if (str.size() == 1)
+			throw "Введена пустая строка.";
+	}
+	catch (const char* exception)
+	{
+		cerr << "\nОшибка: " << exception;
+		cout << "\nПовторите ввод: ";
+		result = 1;
+	}
+
+	return result;
 }
 
