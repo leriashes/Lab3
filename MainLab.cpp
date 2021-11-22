@@ -46,7 +46,7 @@ int main()
 	printf("\n");
 
 	//Ввод только времени
-	printf("\nВвод только времени\n");
+	/*printf("\nВвод только времени\n");
 
 	date_st.ReadTime();
 	printf("\ndate_st = ");
@@ -67,7 +67,7 @@ int main()
 
 	date_d->ReadDate();
 	printf("\n*date_d = ");
-	InOut::Display(*date_d, "all");
+	InOut::Display(*date_d, "all");*/
 
 	//Вывод значений полей в выбранном формате
 	printf("\n\nВывод значений полей в выбранном формате (помимо полного вывода)\ndate_st (hh:mm:ss) = ");
@@ -216,7 +216,7 @@ int main()
 	printf("\n");
 
 	//Ввод значений всех полей объекта
-	printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
+	/*printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
 
 	InOut::Read(&author_st);
 	printf("\nauthor_st = ");
@@ -236,7 +236,7 @@ int main()
 
 	InOut::Read(*author_d);
 	printf("\n*author_d = ");
-	InOut::Display(*author_d, "all");
+	InOut::Display(*author_d, "all");*/
 
 
 	//Вывод значений полей в выбранном формате
@@ -312,7 +312,7 @@ int main()
 	printf("\n");
 
 	//Ввод значений всех полей объекта
-	printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
+	/*printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
 
 	InOut::Read(&address_st);
 	printf("\naddress_st = ");
@@ -332,7 +332,7 @@ int main()
 
 	InOut::Read(*address_d);
 	printf("\n*address_d = ");
-	InOut::Display(*address_d);
+	InOut::Display(*address_d);*/
 
 	//Инициализация значений
 	printf("\n\nИнициализация значений");
@@ -399,7 +399,7 @@ int main()
 	printf("\n");
 
 	//Ввод значений всех полей объекта
-	printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
+	/*printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
 
 	InOut::Read(&reader_st);
 	printf("\nreader_st = ");
@@ -419,7 +419,7 @@ int main()
 
 	InOut::Read(*reader_d);
 	printf("\n*reader_d = ");
-	InOut::Display(*reader_d, "all");
+	InOut::Display(*reader_d, "all");*/
 
 	//Вывод значений полей в выбранном формате
 	printf("\n\nВывод значений полей в выбранном формате (помимо полного вывода)\nreader_st (FullName) = ");
@@ -496,7 +496,7 @@ int main()
 	printf("\n");
 
 	//Ввод значений всех полей объекта
-	printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
+	/*printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
 
 	InOut::Read(&publishing_st);
 	printf("\npublishing_st = ");
@@ -516,7 +516,7 @@ int main()
 
 	InOut::Read(*publishing_d);
 	printf("\n*publishing_d = ");
-	InOut::Display(*publishing_d);
+	InOut::Display(*publishing_d);*/
 
 	//Инициализация значений
 	printf("\n\nИнициализация значений");
@@ -583,7 +583,7 @@ int main()
 	printf("\n");
 
 	//Ввод значений всех полей объекта
-	printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
+	/*printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
 
 	InOut::Read(&book_st);
 	printf("\n\nbook_st ");
@@ -603,7 +603,7 @@ int main()
 
 	InOut::Read(*book_d);
 	printf("\n\n*book_d ");
-	InOut::Display(*book_d);
+	InOut::Display(*book_d);*/
 
 	//Инициализация значений
 	printf("\n\nИнициализация значений");
@@ -769,6 +769,67 @@ int main()
 	delete book_d1;
 	delete book_d2;
 
+	printf("\n\nНажмите любую клавишу для продолжения...");
+	_getch();
+	system("cls");
+
+	//Работа с одномерным массивом
+	Book odnm_mas[3] = { Book("Книга 1"), Book("Книга 2"), Book("Книга 3") };
+	printf("Работа с одномерным массивом\nКниг в библиотеке:%d ", Book::GetCounter());
+
+	for (int i = 0; i < 3; i++)
+	{
+		printf("\n\nodnm_mas[%d] ", i);
+		InOut::Display(odnm_mas[i]);
+	}
+
+	printf("\n\nВведите индекс элемента массива для ввода: ");
+	int k, d;
+	do
+	{
+		k = _getch();
+		k -= 48;
+	} while (k < 0 || k > 2);
+
+	printf("%d\n\nВвод информации о книге odnm_mas[%d]\n", k, k);
+	InOut::Read(odnm_mas[k]);
+
+	printf("\n\nodnm_mas[%d] ", k);
+	InOut::Display(odnm_mas[k]);
+
+	//Работа с двумерным массивом
+	Book dvum_mas[2][2] = { {Book("Книга 1.1"), Book("Книга 1.2")}, {Book("Книга 2.1"), Book("Книга 2.2")} };
+	printf("Работа с двумерным массивом\nКниг в библиотеке:%d ", Book::GetCounter());
+
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < 2; j++)
+		{
+			printf("\n\ndvum_mas[%d][%d] ", i, j);
+			InOut::Display(dvum_mas[i][j]);
+		}
+	}
+
+	printf("\n\nВведите номер строки двумерного массива: ");
+	do
+	{
+		k = _getch();
+		k -= 48;
+	} while (k < 0 || k > 1);
+	printf("%d", k);
+
+	printf("\n\nВведите номер столбца двумерного массива: ");
+	do
+	{
+		d = _getch();
+		d -= 48;
+	} while (d < 0 || d > 1);
+
+	printf("%d\n\nВвод информации о книге dvum_mas[%d][%d]\n", d, k, d);
+	InOut::Read(dvum_mas[k][d]);
+
+	printf("\n\ndvum_mas[%d][%d]", k, d);
+	InOut::Display(dvum_mas[k][d]);
 
 	return 0;
 }
