@@ -2,8 +2,8 @@
 #include "Author.h"
 #include "Reader.h"
 #include "Publishing.h"
-using namespace std;
 #include <string>
+using namespace std;
 
 class Book
 {
@@ -37,6 +37,16 @@ public:
 	~Book();	//Деструктор
 
 	Book& operator=(const Book& source);
+
+	string GetTitle();
+	Author GetAuthor();
+	int GetPagesNumber();
+	string GetGenre();
+	Reader* GetReader();
+	Publishing GetPublishing();
+	int GetPublicationYear();
+	int GetID();
+	Date GetBorrowDate();
 
 	void Init(string title, Author author, int pages_number, string genre, Publishing publishing, int publication_year);		//Инициализация всех полей
 	void Init(string title, Author author, int pages_number, string genre, Reader* reader, Publishing publishing, int publication_year);		//Инициализация всех полей

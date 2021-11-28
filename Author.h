@@ -1,7 +1,8 @@
 #pragma once
 #include "Date.h"
-using namespace std;
 #include <string>
+using namespace std;
+
 class Author	//Автор
 {
 private:

@@ -1,5 +1,6 @@
 #pragma once
 #include "Book.h"
+
 class ForeignBook : public Book
 {
 private:
@@ -14,5 +15,7 @@ public:
 
 	void Init(string title, Author author, int pages_number, string genre, Publishing publishing, int publication_year, string language);		//Инициализация всех полей
 	void Init(string title, Author author, int pages_number, string genre, Reader* reader, Publishing publishing, int publication_year, string language);		//Инициализация всех полей
+
+	void operator=(Book source);
 };
 

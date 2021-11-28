@@ -70,4 +70,27 @@ void ForeignBook::Init(string title, Author author, int pages_number, string gen
 
 	return;
 }
+
+void ForeignBook::operator=(Book source)
+{
+	if (this != &source)
+	{
+		title = source.GetTitle();
+		author = source.GetAuthor();
+		pages_number = source.GetPagesNumber();
+		genre = source.GetGenre();
+
+		if (source.GetReader() != NULL)
+		{
+			reader = source.GetReader();
+			borrow_date = source.GetBorrowDate();
+		}
+
+		publishing = source.GetPublishing();
+		publ_year = source.GetPublicationYear();
+		id = source.GetID(); 
+	}
+
+	return;
+}
  

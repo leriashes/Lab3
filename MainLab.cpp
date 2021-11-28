@@ -12,7 +12,7 @@ int main()
 	setlocale(LC_ALL, "Rus");
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	
+
 	//Работа с объектами класса Date
 	printf("Работа со объектами класса Date\n");
 
@@ -638,7 +638,7 @@ int main()
 		printf("\n\nодин и тот же читатель.\n");
 	else
 		printf("\n\nразные читатели.\n");
-	
+
 	printf("\n\nbook_st1\n");
 	InOut::Display(book_st1);
 	printf("\n\nbooki - глубокая копия book_st1\n");
@@ -840,7 +840,28 @@ int main()
 
 	ForeignBook fbook("Good Morning", fauthor, 345, "Фантастика", &freader, fpublishing, 2021, "Английский"), fbook1(fbook), fbook2;
 	
+	printf("\n\nfbook ");
+	InOut::Display(fbook);
+
+	printf("\n\nfbook1 ");
+	InOut::Display(fbook1);
+
+	printf("\n\nfbook2 ");
+	InOut::Display(fbook2);
+
 	fbook2.Init("Black Beauty", fauthor, 289, "Рассказы", publishing_st, 2019, "Английский");
 	fbook1.Init("Fahrenheit 1", author_st, 451, "Фантастика", &freader, publishing_st, 2013, "Английский");
- 	return 0;
+
+	printf("\n\nfbook1 ");
+	InOut::Display(fbook1);
+
+	printf("\n\nfbook2 ");
+	InOut::Display(fbook2);
+
+	fbook1 = book_st;
+
+	printf("\n\nfbook1 ");
+	InOut::Display(fbook1);
+
+	return 0;
 }

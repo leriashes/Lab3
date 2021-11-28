@@ -157,6 +157,51 @@ Book& Book::operator=(const Book& source)
 	return *this;
 }
 
+string Book::GetTitle()
+{
+	return title;
+}
+
+Author Book::GetAuthor()
+{
+	return author;
+}
+
+int Book::GetPagesNumber()
+{
+	return pages_number;
+}
+
+string Book::GetGenre()
+{
+	return genre;
+}
+
+Reader* Book::GetReader()
+{
+	return reader;
+}
+
+Publishing Book::GetPublishing()
+{
+	return publishing;
+}
+
+int Book::GetPublicationYear()
+{
+	return publ_year;
+}
+
+int Book::GetID()
+{
+	return id;
+}
+
+Date Book::GetBorrowDate()
+{
+	return borrow_date;
+}
+
 //Инициализация всех полей
 void Book::Init(string title, Author author, int pages_number, string genre, Publishing publishing, int publication_year)
 {
