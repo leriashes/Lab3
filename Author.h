@@ -20,6 +20,7 @@ public:
 	void Init(string full_name, int day, int month, int year, string country);	//Инициализация всех полей
 	bool BornIn(string country);	//Проверка родился ли автор в указанной стране
 
+	friend void operator<<(ostream& o, Author author);
 	friend class InOut;
 };
 

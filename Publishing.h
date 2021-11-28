@@ -16,6 +16,7 @@ public:
 	void Init(string name, string city);	//»нициализаци€ всех полей
 	bool IsHere(string city);	//ѕроверка находитс€ ли издательство в заданном городе
 
+	friend void operator<<(ostream& o, Publishing publishing);
 	friend class InOut;
 };
 

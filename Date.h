@@ -1,4 +1,7 @@
 #pragma once
+#include <string>
+using namespace std;
+
 class Date	//Дата
 {
 private:
@@ -30,5 +33,6 @@ public:
 	Date Add(Date add_date);		//Прибавление времени к дате
 	bool IsAnniversary(Date second_date);	//Проверка является ли дата годовщиной другой
 
+	friend void operator<<(ostream& o, Date date);
 	friend class InOut;
 };

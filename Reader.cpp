@@ -90,3 +90,10 @@ bool Reader::IsBirthday(Date day)
 {
 	return birth.IsAnniversary(day);
 }
+
+void operator<<(ostream& o, Reader reader)
+{
+	cout << "[" + reader.doc_number + "] " + reader.full_name + " (Дата рождения: " << reader.birth;
+	cout << ". Адрес проживания: " << reader.address;
+	cout << ") ";
+}

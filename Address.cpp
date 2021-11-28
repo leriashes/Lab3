@@ -45,3 +45,8 @@ bool Address::City(string city)
 
 	return result;
 }
+
+void operator<<(ostream& o, Address address)
+{
+	cout << address.city << ", " << address.street << " " << address.house << ", " << address.flat;
+}
