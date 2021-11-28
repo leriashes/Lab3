@@ -7,7 +7,7 @@ using namespace std;
 
 class Book
 {
-private:
+protected:
 	
 	static int counter;		//—чЄтчик книг
 	static int time;		//¬рем€, на которое можно брать книги
