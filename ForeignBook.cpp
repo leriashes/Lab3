@@ -49,4 +49,25 @@ ForeignBook::ForeignBook(const ForeignBook& source)
 ForeignBook::~ForeignBook()
 {
 }
+
+void ForeignBook::Init(string title, Author author, int pages_number, string genre, Publishing publishing, int publication_year, string language)
+{
+	this->title = title;
+	this->author = author;
+	this->pages_number = abs(pages_number);
+	this->genre = genre;
+	this->publishing = publishing;
+	this->publ_year = abs(publication_year);
+	this->language = language;
+
+	return;
+}
+
+void ForeignBook::Init(string title, Author author, int pages_number, string genre, Reader* reader, Publishing publishing, int publication_year, string language)
+{
+	this->Book::Init(title, author, pages_number, genre, reader, publishing, publication_year);
+	this->language = language;
+
+	return;
+}
  

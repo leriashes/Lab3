@@ -5,13 +5,14 @@
 #include <windows.h>
 #include "Book.h"
 #include "InOut.h"
+#include "ForeignBook.h"
 
 int main()
 {
 	setlocale(LC_ALL, "Rus");
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-
+	
 	//Работа с объектами класса Date
 	printf("Работа со объектами класса Date\n");
 
@@ -46,7 +47,7 @@ int main()
 	printf("\n");
 
 	//Ввод только времени
-	/*printf("\nВвод только времени\n");
+	printf("\nВвод только времени\n");
 
 	date_st.ReadTime();
 	printf("\ndate_st = ");
@@ -67,7 +68,7 @@ int main()
 
 	date_d->ReadDate();
 	printf("\n*date_d = ");
-	InOut::Display(*date_d, "all");*/
+	InOut::Display(*date_d, "all");
 
 	//Вывод значений полей в выбранном формате
 	printf("\n\nВывод значений полей в выбранном формате (помимо полного вывода)\ndate_st (hh:mm:ss) = ");
@@ -216,7 +217,7 @@ int main()
 	printf("\n");
 
 	//Ввод значений всех полей объекта
-	/*printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
+	printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
 
 	InOut::Read(&author_st);
 	printf("\nauthor_st = ");
@@ -236,7 +237,7 @@ int main()
 
 	InOut::Read(*author_d);
 	printf("\n*author_d = ");
-	InOut::Display(*author_d, "all");*/
+	InOut::Display(*author_d, "all");
 
 
 	//Вывод значений полей в выбранном формате
@@ -312,7 +313,7 @@ int main()
 	printf("\n");
 
 	//Ввод значений всех полей объекта
-	/*printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
+	printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
 
 	InOut::Read(&address_st);
 	printf("\naddress_st = ");
@@ -332,7 +333,7 @@ int main()
 
 	InOut::Read(*address_d);
 	printf("\n*address_d = ");
-	InOut::Display(*address_d);*/
+	InOut::Display(*address_d);
 
 	//Инициализация значений
 	printf("\n\nИнициализация значений");
@@ -399,7 +400,7 @@ int main()
 	printf("\n");
 
 	//Ввод значений всех полей объекта
-	/*printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
+	printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
 
 	InOut::Read(&reader_st);
 	printf("\nreader_st = ");
@@ -419,7 +420,7 @@ int main()
 
 	InOut::Read(*reader_d);
 	printf("\n*reader_d = ");
-	InOut::Display(*reader_d, "all");*/
+	InOut::Display(*reader_d, "all");
 
 	//Вывод значений полей в выбранном формате
 	printf("\n\nВывод значений полей в выбранном формате (помимо полного вывода)\nreader_st (FullName) = ");
@@ -496,7 +497,7 @@ int main()
 	printf("\n");
 
 	//Ввод значений всех полей объекта
-	/*printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
+	printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
 
 	InOut::Read(&publishing_st);
 	printf("\npublishing_st = ");
@@ -516,7 +517,7 @@ int main()
 
 	InOut::Read(*publishing_d);
 	printf("\n*publishing_d = ");
-	InOut::Display(*publishing_d);*/
+	InOut::Display(*publishing_d);
 
 	//Инициализация значений
 	printf("\n\nИнициализация значений");
@@ -583,7 +584,7 @@ int main()
 	printf("\n");
 
 	//Ввод значений всех полей объекта
-	/*printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
+	printf("\nВвод значений всех полей объекта (передача и возврат по указателю)\n");
 
 	InOut::Read(&book_st);
 	printf("\n\nbook_st ");
@@ -603,7 +604,7 @@ int main()
 
 	InOut::Read(*book_d);
 	printf("\n\n*book_d ");
-	InOut::Display(*book_d);*/
+	InOut::Display(*book_d);
 
 	//Инициализация значений
 	printf("\n\nИнициализация значений");
@@ -831,5 +832,15 @@ int main()
 	printf("\n\ndvum_mas[%d][%d]", k, d);
 	InOut::Display(dvum_mas[k][d]);
 
-	return 0;
+	Date fdate(28, 11, 2001);
+	Address faddress;
+	Reader freader("Шишкова Валентина Алексеевна", fdate, faddress, 123456789);
+	Author fauthor("Сьюэлл Анна", date_st, "Великобритания");
+	Publishing fpublishing;
+
+	ForeignBook fbook("Good Morning", fauthor, 345, "Фантастика", &freader, fpublishing, 2021, "Английский"), fbook1(fbook), fbook2;
+	
+	fbook2.Init("Black Beauty", fauthor, 289, "Рассказы", publishing_st, 2019, "Английский");
+	fbook1.Init("Fahrenheit 1", author_st, 451, "Фантастика", &freader, publishing_st, 2013, "Английский");
+ 	return 0;
 }
