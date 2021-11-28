@@ -143,6 +143,7 @@
     <ClCompile Include="Author.cpp" />
     <ClCompile Include="Book.cpp" />
     <ClCompile Include="Date.cpp" />
+    <ClCompile Include="ForeignBook.cpp" />
     <ClCompile Include="InOut.cpp" />
     <ClCompile Include="MainLab.cpp" />
     <ClCompile Include="Publishing.cpp" />
@@ -153,6 +154,7 @@
     <ClInclude Include="Author.h" />
     <ClInclude Include="Book.h" />
     <ClInclude Include="Date.h" />
+    <ClInclude Include="ForeignBook.h" />
     <ClInclude Include="InOut.h" />
     <ClInclude Include="Publishing.h" />
     <ClInclude Include="Reader.h" />

@@ -2,6 +2,8 @@
 #include "Author.h"
 #include "Reader.h"
 #include "Publishing.h"
+using namespace std;
+#include <string>
 
 class Book
 {
