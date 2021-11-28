@@ -93,4 +93,22 @@ void ForeignBook::operator=(Book source)
 
 	return;
 }
- 
+
+void operator<<(ostream& o, ForeignBook foreign_book)
+{
+	cout << "ID " << foreign_book.id;
+	cout << "\nНазвание: \"" + foreign_book.title + "\"";
+	cout << "\nЖанр: " + foreign_book.genre;
+	cout << "\nКоличество страниц: " << foreign_book.pages_number;
+	cout << "\nГод публикации: " << foreign_book.publ_year;
+	cout << "\nАвтор: " << foreign_book.author;
+	cout << "\nИздательство: " << foreign_book.publishing;
+	if (foreign_book.reader != NULL) {
+		cout << "\nЧитатель: " << *foreign_book.reader;
+		cout << "\nДата взятия книги: " << foreign_book.borrow_date;
+		cout << "\nСрок сдачи книги: ";
+		Date plus(Book::time, 0, 0);
+		cout << foreign_book.borrow_date + plus;
+	}
+	cout << "\nЯзык: " << foreign_book.language;
+}

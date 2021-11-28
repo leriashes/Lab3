@@ -258,3 +258,21 @@ bool Book::Belongs(Reader *reader)
 {
 	return this->reader == reader;
 }
+
+void operator<<(ostream& o, Book book)
+{
+	cout << "ID " << book.id;
+	cout << "\nНазвание: \"" + book.title + "\"";
+	cout << "\nЖанр: " + book.genre;
+	cout << "\nКоличество страниц: " << book.pages_number;
+	cout << "\nГод публикации: " << book.publ_year;
+	cout << "\nАвтор: " << book.author;
+	cout << "\nИздательство: " << book.publishing;
+	if (book.reader != NULL) {
+		cout << "\nЧитатель: " << *book.reader;
+		cout << "\nДата взятия книги: " << book.borrow_date;
+		cout << "\nСрок сдачи книги: ";
+		Date plus(Book::time, 0, 0);
+		cout << book.borrow_date + plus;
+	}
+}

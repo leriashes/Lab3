@@ -58,3 +58,9 @@ bool Author::BornIn(string country)
 
 	return result;
 }
+
+void operator<<(ostream& o, Author author)
+{
+	cout << author.full_name << " (" << author.birth;
+	cout << ", " << author.country << ")";
+}

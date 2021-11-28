@@ -68,6 +68,8 @@ void Reader::Init(string full_name, Date birth_date, Address address, int doc_nu
 
 	if (doc_number <= 0)
 		this->doc_number = "01 10 123456";
+	else
+		this->doc_number = "";
 
 	for (int i = 0; doc_number > 0 && i < 25; i++)
 	{
@@ -89,4 +91,11 @@ void Reader::Init(string full_name, Date birth_date, Address address, int doc_nu
 bool Reader::IsBirthday(Date day)
 {
 	return birth.IsAnniversary(day);
+}
+
+void operator<<(ostream& o, Reader reader)
+{
+	cout << "[" + reader.doc_number + "] " + reader.full_name + " (Дата рождения: " << reader.birth;
+	cout << ". Адрес проживания: " << reader.address;
+	cout << ") ";
 }

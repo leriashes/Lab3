@@ -20,6 +20,7 @@ public:
 	void Init(string full_name, Date birth_date, Address address, int doc_number);		//Инициализация всех полей
 	bool IsBirthday(Date day);		//Проверка является ли день днём рождения читателя
 
+	friend void operator<<(ostream& o, Reader reader);
 	friend class InOut;
 };
 

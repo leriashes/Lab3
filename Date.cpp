@@ -369,3 +369,8 @@ Date Date::operator++(int)
 	++(*this);
 	return copy;
 }
+
+void operator<<(ostream& o, Date date)
+{
+	printf("%02d.%02d.%04d", date.day, date.month, date.year);
+}

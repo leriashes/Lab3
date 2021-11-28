@@ -41,3 +41,8 @@ bool Publishing::IsHere(string city)
 
 	return result;
 }
+
+void operator<<(ostream& o, Publishing publishing)
+{
+	cout << publishing.name + " (" + publishing.city + ")";
+}

@@ -55,5 +55,6 @@ public:
 	bool CmpReader(Book second_book);		//Сравнение читателей книг
 	bool Belongs(Reader *reader);	//Проверка принадлежности книги читателю
 
+	friend void operator<<(ostream& o, Book book);
 	friend class InOut;
 };
