@@ -71,6 +71,16 @@ void ForeignBook::Init(string title, Author author, int pages_number, string gen
 	return;
 }
 
+string ForeignBook::Category()
+{
+    return genre + " - " + language + " язык";
+}
+
+string ForeignBook::vCategory()
+{
+	return genre + " - " + language + " язык";
+}
+
 void ForeignBook::operator=(Book source)
 {
 	if (this != &source)

@@ -54,6 +54,10 @@ public:
 	bool InLib();	//ѕроверка находитс€ ли книга в библиотеке
 	bool CmpReader(Book second_book);		//—равнение читателей книг
 	bool Belongs(Reader *reader);	//ѕроверка принадлежности книги читателю
+	string Category();
+	virtual string vCategory();
+	bool CmpCategory(string category);
+	bool vCmpCategory(string category);
 
 	friend void operator<<(ostream& o, Book book);
 	friend class InOut;

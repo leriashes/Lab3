@@ -259,6 +259,26 @@ bool Book::Belongs(Reader *reader)
 	return this->reader == reader;
 }
 
+string Book::Category()
+{
+	return genre;
+}
+
+string Book::vCategory()
+{
+	return genre;
+}
+
+bool Book::CmpCategory(string category)
+{
+	return Category() == category;
+}
+
+bool Book::vCmpCategory(string category)
+{
+	return vCategory() == category;
+}
+
 void operator<<(ostream& o, Book book)
 {
 	cout << "ID " << book.id;

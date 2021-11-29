@@ -16,6 +16,8 @@ public:
 
 	void Init(string title, Author author, int pages_number, string genre, Publishing publishing, int publication_year, string language);		//Инициализация всех полей
 	void Init(string title, Author author, int pages_number, string genre, Reader* reader, Publishing publishing, int publication_year, string language);		//Инициализация всех полей
+	string Category();
+	string vCategory();
 
 	friend void operator<<(ostream& o, ForeignBook foreign_book);
 	void operator=(Book source);

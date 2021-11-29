@@ -287,11 +287,11 @@ int main()
 	cout << "\n\nВвод значений всех полей объекта (передача и возврат по ссылке)\n";
 
 	InOut::Read(address_st);
-	cout << "\naddress_st = " << address_st);
+	cout << "\naddress_st = " << address_st;
 	cout << "\n\n";
 
 	InOut::Read(*address_d);
-	cout << "\n*address_d = " << *address_d);
+	cout << "\n*address_d = " << *address_d;
 
 	//Инициализация значений
 	cout << "\n\nИнициализация значений";
@@ -629,7 +629,7 @@ int main()
 	//Элемент первого массива
 	//Следующие выражения равносильны
 	cout << "\nbooks_mas1[1]\n" << *(books_mas1 + 1);
-	cout << "\n\n"<< books_mas1[1];
+	cout << "\n\n" << books_mas1[1];
 	cout << "\n\n\n";
 
 	//Следующие выражения равносильны
@@ -745,5 +745,39 @@ int main()
 
 	fbook1 = book_st;
 	cout << "\n\nfbook1 " << fbook1;
+
+	//Вызов виртуального метода
+	cout << "\n\nКатегория книги fbook1: " << fbook1.vCategory();
+	cout << "\nКатегория книги book_st: " << book_st.vCategory();
+
+	//Вызов обычного метода
+	cout << "\n\nКатегория книги fbook1: " << fbook1.Category();
+	cout << "\nКатегория книги book_st: " << book_st.Category();
+
+	//Вызов виртуального метода через обычный метод базового класса
+	if (fbook1.vCmpCategory(book_st.Category()))
+		cout << "\n\nКатегории одинаковые.";
+	else
+		cout << "\n\nКатегории разные.";
+
+	//При использовании обычного метода вместо виртуального вызывается метод базового класса, а не дочернего
+	if (fbook1.CmpCategory(book_st.Category()))
+		cout << "\n\nКатегории одинаковые.";
+	else
+		cout << "\n\nКатегории разные.";
+
+	Book* b, * s;
+
+	b = new Book();
+	s = new ForeignBook();
+
+	//Вызов виртуального метода
+	cout << "\n\nКатегория книги *b: " << b->vCategory();
+	cout << "\nКатегория книги *s: " << s->vCategory();
+
+	//Вызов обычного метода (при вызове от объекта дочернего класса срабатывает метод базового класса)
+	cout << "\n\nКатегория книги *b: " << b->Category();
+	cout << "\nКатегория книги *s: " << s->Category();
+
 	return 0;
 }
