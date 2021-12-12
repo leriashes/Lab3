@@ -351,6 +351,31 @@ bool Date::IsAnniversary(Date second_date)
 	return (day == second_date.day && month == second_date.month && year <= second_date.year);
 }
 
+string Date::ToString()
+{
+	string result;
+
+	if (day < 10)
+		result += '0';
+	result += to_string(day) + ".";
+	if (month < 10)
+		result += '0';
+	result += to_string(month) + ".";
+	if (year < 1000)
+	{
+		result += '0';
+		if (year < 100)
+		{
+			result += '0';
+			if (year < 10)
+				result += '0';
+		}
+	}
+	result += to_string(year);
+
+	return result;
+}
+
 Date Date::operator+(Date otherdate)
 {
 	return this->Add(otherdate);

@@ -32,6 +32,12 @@ Author::~Author()
 {
 }
 
+void Author::Init(string full_name, Date birth_date)
+{
+	this->full_name = full_name;
+	birth = birth_date;
+}
+
 //Инициализация значений всех полей
 void Author::Init(string full_name, Date birth_date, string country)
 {
@@ -57,6 +63,11 @@ bool Author::BornIn(string country)
 		result = true;
 
 	return result;
+}
+
+string Author::About()
+{
+	return full_name + " (" + birth.ToString() + ", " + country + ")";
 }
 
 void operator<<(ostream& o, Author author)

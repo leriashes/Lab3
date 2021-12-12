@@ -48,6 +48,12 @@ Reader::~Reader()
 {
 }
 
+void Reader::Init(string full_name, Date birth_date)
+{
+	this->full_name = full_name;
+	birth = birth_date;
+}
+
 //Инициализация всех полей
 void Reader::Init(string full_name, Date birth_date, Address address, string doc_number)
 {
@@ -91,6 +97,11 @@ void Reader::Init(string full_name, Date birth_date, Address address, int doc_nu
 bool Reader::IsBirthday(Date day)
 {
 	return birth.IsAnniversary(day);
+}
+
+string Reader::About()
+{
+	return "[" + doc_number + "] " + full_name + " (Дата рождения: " + birth.ToString() + ". Адрес проживания: " + address.ToString() + ") ";
 }
 
 void operator<<(ostream& o, Reader reader)

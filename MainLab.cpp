@@ -779,5 +779,9 @@ int main()
 	cout << "\n\nКатегория книги *b: " << b->Category();
 	cout << "\nКатегория книги *s: " << s->Category();
 
+	
+	cout << "\n\nИнформация об авторе author_st: " << author_st.About();
+	cout << "\n\nИнформация о читателе reader_st: " << reader_st.About();
+
 	return 0;
 }

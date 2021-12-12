@@ -32,6 +32,7 @@ public:
 	Date Compare(Date end_date);		//Сравнение дат
 	Date Add(Date add_date);		//Прибавление времени к дате
 	bool IsAnniversary(Date second_date);	//Проверка является ли дата годовщиной другой
+	string ToString();
 
 	friend void operator<<(ostream& o, Date date);
 	friend class InOut;

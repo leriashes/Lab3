@@ -17,6 +17,7 @@ public:
 
 	void Init(string city, string street, int house_number, int flat_number);		//Инициализация всех полей
 	bool City(string city);	//Проверка совпадения города
+	string ToString();
 
 	friend void operator<<(ostream& o, Address address);
 	friend class InOut;
