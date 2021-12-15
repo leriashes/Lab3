@@ -6,12 +6,18 @@
 #include "Book.h"
 #include "InOut.h"
 #include "ForeignBook.h"
+#include "Array.h"
 
 int main()
 {
 	setlocale(LC_ALL, "Rus");
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
+
+	Array<Book> abook(4);
+	abook.Read();
+	string fg = abook.Categories();
+	cout << "\n\nКатегории книг массива:\n" << fg;
 
 	//Работа с объектами класса Date
 	cout << "Работа со объектами класса Date\n";
