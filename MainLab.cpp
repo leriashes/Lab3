@@ -3,16 +3,54 @@
 #include <conio.h>
 #include <locale.h>
 #include <windows.h>
+#include <vector>
+#include <algorithm>
 #include "Book.h"
 #include "InOut.h"
 #include "ForeignBook.h"
 #include "Array.h"
+
+bool correct_order(Book b1, Book b2)
+{
+	bool result = false;
+	if ((b1.GetTitle())[0] <= (b2.GetTitle())[0])
+		result = true;
+	return result;
+}
 
 int main()
 {
 	setlocale(LC_ALL, "Rus");
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
+
+	vector<Book> knigki;
+	vector<Book>::iterator vb;
+
+	Book* b1 = new Book("Старый мир");
+	Book* b2 = new Book("Новый мир");
+	ForeignBook* fb1 = new ForeignBook();
+
+	knigki.clear();
+	knigki.push_back(*b1);
+	knigki.push_back(*fb1);
+	knigki.push_back(*b2);
+
+	cout << "Контейнер до сортировки\n\n";
+	for (vb = knigki.begin(); vb != knigki.end(); vb++)
+	{
+		InOut::Display(*vb);
+		cout << "\n\n";
+	}
+
+	sort(knigki.begin(), knigki.end(), correct_order);
+
+	cout << "Контейнер после сортировки названий по алфавиту\n\n";
+	for (vb = knigki.begin(); vb != knigki.end(); vb++)
+	{
+		InOut::Display(*vb);
+		cout << "\n\n";
+	}
 
 	Array<Book> abook(4);
 	abook.Read();
