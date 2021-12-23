@@ -9,6 +9,7 @@
 #include "InOut.h"
 #include "ForeignBook.h"
 #include "Array.h"
+char symbol;
 
 bool correct_order(Book b1, Book b2)
 {
@@ -16,6 +17,11 @@ bool correct_order(Book b1, Book b2)
 	if ((b1.GetTitle())[0] <= (b2.GetTitle())[0])
 		result = true;
 	return result;
+}
+
+bool search_book(Book b)
+{
+	return (b.GetTitle())[0] == symbol;
 }
 
 int main()
@@ -50,6 +56,29 @@ int main()
 	{
 		InOut::Display(*vb);
 		cout << "\n\n";
+	}
+
+	Book b3("Сыч и ёжик");
+	Book b4("Сорока и сыр");
+
+	knigki.push_back(b3);
+	knigki.push_back(b4);
+	vector<Book>::iterator searcher;
+
+
+	cout << "Введите букву, на которую должно начинатся название книги: ";
+	cin >> symbol;
+
+	cout << "\nКниги контейнера, удовлетворяющие запросу\n\n";
+	for (vb = knigki.begin(); vb != knigki.end(); vb++)
+	{
+		searcher = find_if(vb, knigki.end(), search_book);
+		vb = searcher;
+		if (searcher != knigki.end())
+		{
+			InOut::Display(*vb);
+			cout << "\n\n";
+		}
 	}
 
 	Array<Book> abook(4);
